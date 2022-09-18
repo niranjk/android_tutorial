@@ -51,4 +51,12 @@ class KotlinFunctionConcepts {
         println(transformMessage)
         println(tranformUsingReference)
     }
+
+    // EXTENSION FUNCTION
+    fun String.dropLastWithReverse(){
+        this.reversed().dropLast(2)
+    }
+    fun Int.isEven(): Boolean{
+        return  this % 2 == 0
+    }
 }

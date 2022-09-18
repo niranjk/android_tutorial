@@ -49,6 +49,12 @@ class Bike( val price: Int, var color: String = "white"){
     init {
         println("Bike color ${this.color}")
     }
+
+    // Predefined Data class that store 2 and 3 data respectively
+    val pair = Pair(first = 1, second = 2)
+    var triple = Triple(first = "a", second = "b", third = "c")
+    // Alternative way of declaring Pair using the to keyword
+    val alternativePair = 1 to "One"
 }
 
 class Trains( coutch: Int){
@@ -62,5 +68,55 @@ class Trains( coutch: Int){
 
     init {
         // multiple init block is allowed
+    }
+}
+
+// Abstract Class
+abstract class Food {
+    abstract val name: String
+    abstract val price: Int
+    fun eat(){
+        println("I am eating $name")
+    }
+}
+class Pasta() : Food(){
+    override val name: String = "Pasta"
+    override val price: Int = 2
+}
+class UseCaseAbstractClass{
+    val pasta = Pasta()
+    fun eating(){
+        pasta.eat()
+    }
+}
+
+
+// Data class
+data class Player(val name: String, val id: Int = 0, val club: String)
+
+// Enum class
+enum class FruitsEnum(val color: String){
+    APPLE(color = "red"),
+    BANANA(color = "yellow"),
+    ORANGE(color = "orange"),
+    MANGO(color = "green")
+}
+
+// Singleton / Object
+object Calculator {
+    // only 1 instance of this class exists you cannot create more instances..
+    fun add( n1: Int, n2: Int) = n1+n2
+    fun sub( n3: Int, n4: Int) = n4-n3
+}
+
+// Companion Object
+class Robot{
+    // Share the single instance of set of properties and methods
+    companion object RobotConstants{
+        const val MEASUREMENT_UNIT = "METERS"
+        const val ROBOT_NAME = "NIXY"
+        val size = 10.0
+        val weight = 2.0
+        fun capacity(input: Int, output: Int)= output-input
     }
 }
