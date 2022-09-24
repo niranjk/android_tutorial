@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidTutorials</string>
+    
+    <string name="label_hello_world">Hello World!</string>
+    <string name="label_press_me">Press Me</string>
+    <string name="label_press_me_desc">The User Pressed Me</string>
 </resources>
