@@ -1,21 +1,30 @@
+// GRADLE BUILD FILE
+
+// 1. DECLARE PLUGINS
+/**
+ * PLUGINS provide libraries and infrastructure needed by your app
+ * Plugins provide additional functionality and supplementary dependencies, tasks
+ * so that developer do not have to declare all the dependencies
+ */
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
-
+// 2. DEFINE ANDROID PROPERTIES
+/***
+ * ANDROID CONFIGURATION block, we set the android specific properties like
+ * SDK version, test runners, build targets ....
+ */
 android {
     compileSdk 33
-
     defaultConfig {
         applicationId "com.niranjan.androidtutorials"
         minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -33,9 +42,14 @@ android {
         viewBinding = true
     }
 }
-
+// 3. HANDLE DEPENDENCIES
+/***
+ * While creating App we do not have to write everything from scratch
+ * we can use local or remote dependencies.
+ * Note* we should avoid conflicting one dependency with another so for
+ * that it is important to organize our code in packages.
+ */
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.4.0'
@@ -45,6 +59,3 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-repositories {
-    mavenCentral()
-}

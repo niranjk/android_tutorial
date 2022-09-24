@@ -1,9 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+
+    // 4. CONNECT TO REPOSITORIES
+/***
+ * Repository are the location where all your libraries or dependencies are organized.
+ * Here we declare this repository location so Gradle can look for the libraries and
+ * dependencies and downloading them.
+ * If you declare in top level they will be common to all sub-projects
+ */
     repositories {
         google()
         mavenCentral()
     }
+
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20"
