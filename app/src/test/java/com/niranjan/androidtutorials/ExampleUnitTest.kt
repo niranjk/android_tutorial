@@ -8,6 +8,8 @@ import org.junit.Assert.*
  * Example local unit test, which will execute on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
+ * See [https://developer.android.com/training/testing] for Testing Android App
+ * See [https://mockk.io] for mocking in Kotlin
  */
 class ExampleUnitTest {
     @Test
