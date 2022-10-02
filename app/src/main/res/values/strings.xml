@@ -4,4 +4,11 @@
     <string name="label_hello_world">Hello World!</string>
     <string name="label_press_me">Press Me</string>
     <string name="label_press_me_desc">The User Pressed Me</string>
+
+    <!--Slot text-->
+    <string name="label_slot_machine">Slot Machine</string>
+    <string name="label_slot_play">Play</string>
+    <string name="label_slot_first">1</string>
+    <string name="label_slot_second">2</string>
+    <string name="label_slot_third">3</string>
 </resources>

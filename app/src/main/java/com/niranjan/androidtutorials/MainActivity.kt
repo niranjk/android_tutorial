@@ -1,9 +1,11 @@
 package com.niranjan.androidtutorials
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.niranjan.androidtutorials.databinding.ActivityMainBinding
+import com.niranjan.androidtutorials.slot.SlotActivity
 
 /**
  * Our MainActivity extends the AppCompatActivity and inherits the behavior from the Android Framework Activity. So we can override the lifecycle methods to our MainActivity.
@@ -14,6 +16,21 @@ class MainActivity : AppCompatActivity() {
     // ViewBinding
     private lateinit var binding : ActivityMainBinding  // Lately initalized in onCreate function call
     // private var nullableBinding: ActivityMainBinding? = null
+
+    private val mainAdapter = MainAdapter(DummyData.dummyList()){
+        // adapter item click
+        when(it){
+            MainConstants.Feature.SLOT.value -> {
+                //navigate to SlotActivity
+                startActivity(
+                    Intent(this, SlotActivity::class.java)
+                )
+            }
+            else -> {
+                // nothing
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         /***
@@ -24,12 +41,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         with(binding){
-            // we are using a View.OnClickListener as Single Abstract Method here
-            button.setOnClickListener {
-                helloTv.text = resources.getString(R.string.app_name)
-                // we make a toast on button press
-                Toast.makeText( it.context, getString(R.string.label_press_me_desc), Toast.LENGTH_LONG).show()
-            }
+            mainRv.adapter = mainAdapter
+            mainRv.layoutManager = LinearLayoutManager(this@MainActivity)
         }
     }
     // Activity Lifecycle - Stage Visible

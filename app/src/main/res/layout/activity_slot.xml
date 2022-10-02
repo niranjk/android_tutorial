@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+            android:text="@string/label_slot_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slot_2_tv"
+            app:layout_constraintStart_toEndOf="@+id/slot_1_tv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/slot_3_tv"
+            app:layout_constraintTop_toBottomOf="@+id/slot_title_tv" app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintVertical_bias="0.314"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
+    <Button
+            android:text="@string/label_slot_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.749"/>
+    <TextView
+            android:text="@string/label_slot_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slot_1_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/slot_2_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.407"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3" app:drawableTint="@color/purple_200"
+            app:drawableTintMode="src_atop"/>
+    <TextView
+            android:text="@string/label_slot_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/slot_3_tv"
+            app:layout_constraintStart_toEndOf="@+id/slot_2_tv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.407"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+    <TextView
+            android:text="@string/label_slot_machine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/slot_title_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="128dp"
+            app:textAllCaps="true" android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            app:lineHeight="@dimen/text_14sp" app:fontFamily="casual"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
