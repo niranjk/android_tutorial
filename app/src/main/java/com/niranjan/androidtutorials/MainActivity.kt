@@ -12,7 +12,6 @@ import com.niranjan.androidtutorials.slot.SlotActivity
  */
 class MainActivity : AppCompatActivity() {
     // Activity Lifecycle - Stage Created
-
     // ViewBinding
     private lateinit var binding : ActivityMainBinding  // Lately initalized in onCreate function call
     // private var nullableBinding: ActivityMainBinding? = null

@@ -7,8 +7,7 @@
  * so that developer do not have to declare all the dependencies
  */
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 // 2. DEFINE ANDROID PROPERTIES
 /***
@@ -39,7 +38,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding = true
+        dataBinding = true
     }
 }
 // 3. HANDLE DEPENDENCIES
