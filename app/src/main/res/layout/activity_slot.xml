@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/slot_1_tv"
-                android:visibility="@{slotData.firstSlot > 5 ? View.VISIBLE : View.GONE}"
+                android:visibility="@{slotData.firstSlot != null ? View.VISIBLE : View.GONE}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintEnd_toStartOf="@+id/slot_2_tv"
