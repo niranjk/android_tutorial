@@ -8,4 +8,5 @@ Concepts explained:
 - RecyclerView.ViewHolder 
 - ConstraintLayout 
 - RandomNumber Generation 
+- DataBinding 
 
