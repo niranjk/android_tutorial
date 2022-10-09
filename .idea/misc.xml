@@ -4,9 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/drawable/ic_round_up.xml" value="0.11388888888888889" />
+        <entry key="app/src/main/res/drawable/ic_service.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/ic_store.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_price_layout.xml" value="0.19747899159663865" />
         <entry key="app/src/main/res/layout/activity_slot.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recycler_item_view.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/tip_layout.xml" value="0.25" />
       </map>
     </option>
   </component>

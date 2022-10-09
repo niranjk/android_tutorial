@@ -32,6 +32,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.all{
+        buildConfigField("String", "DF_SLOT_ACTIVITY", df_slot_activity)
+        buildConfigField("String", "DF_PRICE_ACTIVITY", df_price_activity)
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

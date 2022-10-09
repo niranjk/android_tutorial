@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".slot.SlotActivity"/>
+        <activity android:name=".price.PriceCalculatorActivity"/>
     </application>
 
 </manifest>

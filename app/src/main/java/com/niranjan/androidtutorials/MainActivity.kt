@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.niranjan.androidtutorials.databinding.ActivityMainBinding
-import com.niranjan.androidtutorials.slot.SlotActivity
 
 /**
  * Our MainActivity extends the AppCompatActivity and inherits the behavior from the Android Framework Activity. So we can override the lifecycle methods to our MainActivity.
@@ -22,7 +21,19 @@ class MainActivity : AppCompatActivity() {
             MainConstants.Feature.SLOT.value -> {
                 //navigate to SlotActivity
                 startActivity(
-                    Intent(this, SlotActivity::class.java)
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_SLOT_ACTIVITY
+                    )
+                )
+            }
+            MainConstants.Feature.PRICE.value -> {
+                // navigate to PriceCalculatorActivity
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_PRICE_ACTIVITY
+                    )
                 )
             }
             else -> {

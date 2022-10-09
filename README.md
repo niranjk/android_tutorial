@@ -9,4 +9,8 @@ Concepts explained:
 - ConstraintLayout 
 - RandomNumber Generation 
 - DataBinding 
+# Price App 
+Concepts explained: 
+- Handling Keyboard Input KeyEvent 
+- 
 

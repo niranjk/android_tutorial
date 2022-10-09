@@ -4,10 +4,10 @@ object DummyData {
 
     fun dummyList() = listOf(
         MainItemUiModel(
-            title = "Slot"
+            title = "Slot Machine"
         ),
         MainItemUiModel(
-            title = "Feature 2"
+            title = "Price Calculator"
         ),
         MainItemUiModel(
             title = "Feature 3"

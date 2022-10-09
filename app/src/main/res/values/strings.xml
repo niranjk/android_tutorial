@@ -11,4 +11,29 @@
     <string name="label_slot_first">1</string>
     <string name="label_slot_second">2</string>
     <string name="label_slot_third">3</string>
+
+    <!-- Price App -->
+    <!-- Hint text for editable text field where the user enters the price of product -->
+    <string name="cost_of_product">Cost of Product</string>
+
+    <!-- Question prompt for the group of radio buttons with different discount options -->
+    <string name="which_discount_coupon">Which discount coupon?</string>
+
+    <!-- Discount Shareholders - 20%   -->
+    <string name="discount_for_company_shareholders">Shareholders (25%)</string>
+
+    <!-- Discount Frequent Customer - 18%  -->
+    <string name="discount_for_frequent_customers">Frequent Customer (20%)</string>
+
+    <!-- Discount Regular Customer - 15%   -->
+    <string name="discount_for_regular_customers">Regular Customer (15%)</string>
+
+    <!-- Text label for toggle switch that asks the user if they want to round up the discount  -->
+    <string name="round_up_discount">Round up discount?</string>
+
+    <!-- Label for button that calculates the discount  -->
+    <string name="calculate">Calculate</string>
+
+    <!-- Formatted string for the  price  -->
+    <string name="final_price">Price After Discount: </string>
 </resources>
