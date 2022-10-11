@@ -1,9 +1,10 @@
 package com.niranjan.androidtutorials
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.niranjan.androidtutorials.databinding.ActivityMainBinding
 
 /**
@@ -36,6 +37,15 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             }
+            MainConstants.Feature.QUIZ.value -> {
+                // navigate to PriceCalculatorActivity
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_QUIZ_ACTIVITY
+                    )
+                )
+            }
             else -> {
                 // nothing
             }
@@ -50,11 +60,33 @@ class MainActivity : AppCompatActivity() {
         // viewbinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        /*
         with(binding){
             mainRv.adapter = mainAdapter
             mainRv.layoutManager = LinearLayoutManager(this@MainActivity)
         }
+         */
     }
+
+    // Inflate the Options Menu in the Activity.
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+        return true
+    }
+
+    // Handle the Menu Item Click
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_about_fragment -> {
+                // Navigate to About Fragment
+            }
+            R.id.nav_contacts -> {
+                // Navigate to Contacts Fragment
+            }
+        }
+        return true
+    }
+
     // Activity Lifecycle - Stage Visible
     override fun onStart() {
         super.onStart()

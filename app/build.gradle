@@ -36,6 +36,7 @@ android {
     buildTypes.all{
         buildConfigField("String", "DF_SLOT_ACTIVITY", df_slot_activity)
         buildConfigField("String", "DF_PRICE_ACTIVITY", df_price_activity)
+        buildConfigField("String", "DF_QUIZ_ACTIVITY", df_quiz_activity)
     }
 
     compileOptions {
@@ -57,10 +58,15 @@ android {
  * that it is important to organize our code in packages.
  */
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.core:core-ktx:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

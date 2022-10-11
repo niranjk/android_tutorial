@@ -36,4 +36,9 @@
 
     <!-- Formatted string for the  price  -->
     <string name="final_price">Price After Discount: </string>
+
+    <!--Options Menu Label-->
+    <string name="label_options_menu_about">About</string>
+    <string name="label_options_menu_contacts">Contacts</string>
+
 </resources>

@@ -12,5 +12,23 @@ Concepts explained:
 # Price App 
 Concepts explained: 
 - Handling Keyboard Input KeyEvent 
-- 
+- Inputs From EditText Field
+# Quiz App 
+Concepts explained: 
+- Multiscreen Activity 
+- Intent : Explicit and Implicit 
+- NavigationUI
+
+ActionBar or AppBar 
+- Toolbar
+- CollapsingToolbarLayout
+- ActionBar 
+- AppBarConfiguration
+
+Navigation Drawer 
+- DrawerLayout
+- FragmentContainerView
+- NavigationView 
+
+BottomNavigationView
 
