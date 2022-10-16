@@ -7,19 +7,19 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.niranjan.androidtutorials.DrawerBaseActivity
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.databinding.ActivityPriceLayoutBinding
 
-class PriceCalculatorActivity : AppCompatActivity() {
+class PriceCalculatorActivity : DrawerBaseActivity() {
 
     private lateinit var priceLayoutBinding: ActivityPriceLayoutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        priceLayoutBinding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_price_layout
-        )
+        priceLayoutBinding = ActivityPriceLayoutBinding.inflate(layoutInflater)
+        setContentView(priceLayoutBinding.root)
+        allocateActivityTitle(getString(R.string.label_price_calculator))
         // Set up Key Listener on the EditText field : to listen to "Enter" button pressed
         with(priceLayoutBinding){
             // Listen to Keyboard "Enter" button pressed

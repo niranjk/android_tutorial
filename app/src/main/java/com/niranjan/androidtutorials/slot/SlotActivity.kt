@@ -13,7 +13,8 @@ class SlotActivity : DrawerBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        slotBinding = DataBindingUtil.setContentView(this, R.layout.activity_slot)
+        slotBinding = ActivitySlotBinding.inflate(layoutInflater)
+        setContentView(slotBinding.root)
         allocateActivityTitle(getString(R.string.label_slot_machine))
         setDefaultNumbers()
         slotBinding.button.setOnClickListener {

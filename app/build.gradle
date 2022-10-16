@@ -37,6 +37,7 @@ android {
         buildConfigField("String", "DF_SLOT_ACTIVITY", df_slot_activity)
         buildConfigField("String", "DF_PRICE_ACTIVITY", df_price_activity)
         buildConfigField("String", "DF_QUIZ_ACTIVITY", df_quiz_activity)
+        buildConfigField("String", "DF_MAIN_ACTIVITY", df_main_activity)
     }
 
     compileOptions {

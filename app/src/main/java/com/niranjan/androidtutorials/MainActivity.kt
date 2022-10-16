@@ -13,7 +13,7 @@ class MainActivity : DrawerBaseActivity()
 {
     // Activity Lifecycle - Stage Created
     // ViewBinding
-    lateinit var mainBinding : com.niranjan.androidtutorials.databinding.ActivityMainBinding  // Lately initalized in onCreate function call
+    lateinit var mainBinding : ActivityMainBinding  // Lately initalized in onCreate function call
     // private var nullableBinding: ActivityMainBinding? = null
 
     private val mainAdapter = MainAdapter(DummyData.dummyList()){
@@ -63,6 +63,7 @@ class MainActivity : DrawerBaseActivity()
         setContentView(mainBinding.root)
     }
 
+    /*
     // Inflate the Options Menu in the Activity.
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
@@ -82,6 +83,7 @@ class MainActivity : DrawerBaseActivity()
         return true
     }
 
+     */
     // Activity Lifecycle - Stage Visible
     override fun onStart() {
         super.onStart()

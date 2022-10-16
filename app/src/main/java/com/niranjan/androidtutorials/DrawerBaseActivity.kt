@@ -39,6 +39,15 @@ open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedLis
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         drawerLayout?.closeDrawer(GravityCompat.START)
         when(item.itemId){
+            R.id.mainFragment -> {
+                //navigate to SlotActivity
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_MAIN_ACTIVITY
+                    )
+                )
+            }
             R.id.slotActivity -> {
                 //navigate to SlotActivity
                 startActivity(
@@ -71,6 +80,6 @@ open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedLis
     }
 
     protected fun allocateActivityTitle(titleString: String){
-        if (supportActionBar != null) supportActionBar?.title = titleString
+        supportActionBar?.title = titleString
     }
 }
