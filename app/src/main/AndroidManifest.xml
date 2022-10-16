@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".slot.SlotActivity"/>
         <activity android:name=".price.PriceCalculatorActivity"/>
+        <activity android:name=".quiz.QuizActivity" />
     </application>
 
 </manifest>

@@ -9,14 +9,18 @@
         <entry key="app/src/main/res/drawable/ic_round_up.xml" value="0.11388888888888889" />
         <entry key="app/src/main/res/drawable/ic_service.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_store.xml" value="0.23703703703703705" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_container_main_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_drawer_base.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_price_layout.xml" value="0.19747899159663865" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_slot.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_aboutinfo.xml" value="0.29257246376811596" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.300509337860781" />
+        <entry key="app/src/main/res/layout/nav_header_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recycler_item_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/tip_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/navdrawer_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/options_menu.xml" value="0.165" />
       </map>
     </option>

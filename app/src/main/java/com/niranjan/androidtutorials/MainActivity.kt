@@ -4,16 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import com.niranjan.androidtutorials.databinding.ActivityMainBinding
 
 /**
  * Our MainActivity extends the AppCompatActivity and inherits the behavior from the Android Framework Activity. So we can override the lifecycle methods to our MainActivity.
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : DrawerBaseActivity()
+{
     // Activity Lifecycle - Stage Created
     // ViewBinding
-    private lateinit var binding : ActivityMainBinding  // Lately initalized in onCreate function call
+    lateinit var mainBinding : com.niranjan.androidtutorials.databinding.ActivityMainBinding  // Lately initalized in onCreate function call
     // private var nullableBinding: ActivityMainBinding? = null
 
     private val mainAdapter = MainAdapter(DummyData.dummyList()){
@@ -58,14 +58,9 @@ class MainActivity : AppCompatActivity() {
          * This process is called Layout Inflation.
          */
         // viewbinding
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        /*
-        with(binding){
-            mainRv.adapter = mainAdapter
-            mainRv.layoutManager = LinearLayoutManager(this@MainActivity)
-        }
-         */
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        allocateActivityTitle(getString(R.string.app_name))
+        setContentView(mainBinding.root)
     }
 
     // Inflate the Options Menu in the Activity.

@@ -1,13 +1,12 @@
 package com.niranjan.androidtutorials.slot
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.niranjan.androidtutorials.DrawerBaseActivity
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.databinding.ActivitySlotBinding
 
-class SlotActivity : AppCompatActivity() {
+class SlotActivity : DrawerBaseActivity() {
 
     lateinit var slotBinding: ActivitySlotBinding
     lateinit var mSlotData: SlotData
@@ -15,6 +14,7 @@ class SlotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         slotBinding = DataBindingUtil.setContentView(this, R.layout.activity_slot)
+        allocateActivityTitle(getString(R.string.label_slot_machine))
         setDefaultNumbers()
         slotBinding.button.setOnClickListener {
             generateSlotNumbers()

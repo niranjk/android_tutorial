@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mainFragment"
+          android:icon="@drawable/ic_school_tutorial"
+          android:title="@string/app_name"/>
+    <item
+        android:id="@+id/slotActivity"
+        android:icon="@drawable/ic_about"
+        android:title="@string/label_slot_machine"/>
+    <item
+        android:id="@+id/priceCalculatorActivity"
+        android:icon="@drawable/ic_price_euro"
+        android:title="@string/label_price_calculator"
+    />
+    <item
+        android:id="@+id/quizActivity"
+        android:icon="@drawable/ic_quiz_question_answer"
+        android:title="@string/label_quiz_app"
+    />
+</menu>
