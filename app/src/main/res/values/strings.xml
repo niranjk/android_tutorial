@@ -31,8 +31,10 @@
     <!-- Formatted string for the  price  -->
     <string name="final_price">Price After Discount: </string>
 
-    <!-- Quick App text-->
+    <!-- Quiz App text-->
     <string name="label_quiz_app">Quiz</string>
+    <string name="title_quiz_question">Quiz Question (%1$d/%2$d)</string>
+    <string name="submit_button">Submit</string>
 
 
     <!-- Drawer Layout-->

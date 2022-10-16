@@ -10,6 +10,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 // 2. DEFINE ANDROID PROPERTIES
 /***

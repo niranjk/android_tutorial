@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/quiz_nav_graph" app:startDestination="@id/quizFragment">
+
+    <fragment android:id="@+id/quizFragment"
+              android:name="com.niranjan.androidtutorials.quiz.QuizFragment"
+              android:label="QuizFragment">
+        <action android:id="@+id/action_quizFragment_to_quizResultFragment"
+                app:destination="@id/quizResultFragment"/>
+    </fragment>
+    <fragment android:id="@+id/quizResultFragment"
+              android:name="com.niranjan.androidtutorials.quiz.QuizResultFragment"
+              android:label="QuizResultFragment">
+        <argument
+                android:name="numQuestions"
+                app:argType="integer" />
+        <argument
+                android:name="numCorrect"
+                app:argType="integer" />
+        <action android:id="@+id/action_quizResultFragment_to_quizFragment" app:destination="@id/quizFragment"/>
+    </fragment>
+</navigation>
