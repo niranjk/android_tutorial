@@ -96,9 +96,12 @@ class QuizFragment : Fragment(){
                         binding.invalidateAll()
                     } else {
                         // We've won!  Navigate
-                        val actions = QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(numQuiz, questionIndex)
-                        view.findNavController()
-                            .navigate(actions)
+                        val actions = QuizFragmentDirections.actionQuizFragmentToQuizResultFragment(
+                            numQuiz,
+                            questionIndex
+                        )
+
+                        view.findNavController().navigate(actions)
                     }
                 }
             }

@@ -5,12 +5,16 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.databinding.FragmentQuizResultBinding
 
 class QuizResultFragment : Fragment(){
 
     lateinit var binding : FragmentQuizResultBinding
+
+    // Retrieve our arguments
+    val args : QuizResultFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(
@@ -19,6 +23,10 @@ class QuizResultFragment : Fragment(){
             container,
             false
         )
+
+        val numberOfQuestions = args.numQuestions
+        val numberOfCorrectAnswers = args.numCorrect
+
         setClickListeners()
         return binding.root
     }
