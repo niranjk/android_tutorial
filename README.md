@@ -32,3 +32,12 @@ Navigation Drawer
 
 BottomNavigationView
 
+
+
+# LifecycleDemoActivity
+- Activity Life Cycle 
+- Save Activity State 
+
+# LifecycleDemoFragment 
+- Fragment Life Cycle 
+
