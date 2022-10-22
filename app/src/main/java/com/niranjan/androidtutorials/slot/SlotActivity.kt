@@ -1,8 +1,7 @@
 package com.niranjan.androidtutorials.slot
 
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import com.niranjan.androidtutorials.DrawerBaseActivity
+import com.niranjan.androidtutorials.drawer.DrawerBaseActivity
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.databinding.ActivitySlotBinding
 
@@ -33,7 +32,7 @@ class SlotActivity : DrawerBaseActivity() {
     }
 
     private fun generateSlotNumbers(){
-        var nSlotData = SlotData(
+        val nSlotData = SlotData(
             (1..100).random().toString(),
                    (200..500).random().toString(),
                     (500..1000).random().toString()

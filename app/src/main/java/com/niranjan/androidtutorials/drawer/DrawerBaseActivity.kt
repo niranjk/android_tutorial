@@ -1,4 +1,4 @@
-package com.niranjan.androidtutorials
+package com.niranjan.androidtutorials.drawer
 
 import android.content.Intent
 import android.view.MenuItem
@@ -10,6 +10,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
+import com.niranjan.androidtutorials.BuildConfig
+import com.niranjan.androidtutorials.R
 
 open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedListener{
 

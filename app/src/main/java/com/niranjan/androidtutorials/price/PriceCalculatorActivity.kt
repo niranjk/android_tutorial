@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.niranjan.androidtutorials.DrawerBaseActivity
+import com.niranjan.androidtutorials.drawer.DrawerBaseActivity
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.databinding.ActivityPriceLayoutBinding
 

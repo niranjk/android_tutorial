@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.niranjan.androidtutorials.databinding.RecyclerItemViewBinding
+import com.niranjan.androidtutorials.uimodel.MainItemUiModel
+
 class MainAdapter(
     private val itemList: List<MainItemUiModel>,
     val itemListeners : (title: String) -> Unit // item click listener

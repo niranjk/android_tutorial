@@ -2,9 +2,8 @@ package com.niranjan.androidtutorials
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import com.niranjan.androidtutorials.databinding.ActivityMainBinding
+import com.niranjan.androidtutorials.drawer.DrawerBaseActivity
 
 /**
  * Our MainActivity extends the AppCompatActivity and inherits the behavior from the Android Framework Activity. So we can override the lifecycle methods to our MainActivity.

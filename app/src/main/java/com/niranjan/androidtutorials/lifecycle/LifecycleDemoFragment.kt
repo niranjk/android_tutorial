@@ -1,4 +1,4 @@
-package com.niranjan.androidtutorials
+package com.niranjan.androidtutorials.lifecycle
 
 import android.content.Context
 import android.os.Bundle

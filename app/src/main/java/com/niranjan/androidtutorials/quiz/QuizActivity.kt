@@ -2,10 +2,7 @@ package com.niranjan.androidtutorials.quiz
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.niranjan.androidtutorials.BuildConfig
-import com.niranjan.androidtutorials.DrawerBaseActivity
+import com.niranjan.androidtutorials.drawer.DrawerBaseActivity
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.databinding.ActivityQuizBinding
 

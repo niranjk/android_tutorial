@@ -1,5 +1,7 @@
 package com.niranjan.androidtutorials
 
+import com.niranjan.androidtutorials.uimodel.MainItemUiModel
+
 object DummyData {
 
     fun dummyList() = listOf(
