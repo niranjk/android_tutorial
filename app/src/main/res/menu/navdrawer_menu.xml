@@ -4,17 +4,22 @@
           android:icon="@drawable/ic_school_tutorial"
           android:title="@string/app_name"/>
     <item
-        android:id="@+id/slotActivity"
-        android:icon="@drawable/ic_about"
-        android:title="@string/label_slot_machine"/>
+            android:id="@+id/slotActivity"
+            android:icon="@drawable/ic_about"
+            android:title="@string/label_slot_machine"/>
     <item
-        android:id="@+id/priceCalculatorActivity"
-        android:icon="@drawable/ic_price_euro"
-        android:title="@string/label_price_calculator"
+            android:id="@+id/priceCalculatorActivity"
+            android:icon="@drawable/ic_price_euro"
+            android:title="@string/label_price_calculator"
     />
     <item
-        android:id="@+id/quizActivity"
-        android:icon="@drawable/ic_quiz_question_answer"
-        android:title="@string/label_quiz_app"
+            android:id="@+id/quizActivity"
+            android:icon="@drawable/ic_quiz_question_answer"
+            android:title="@string/label_quiz_app"
+    />
+    <item
+            android:id="@+id/runnerActivity"
+            android:icon="@drawable/ic_runner"
+            android:title="@string/label_runner_app"
     />
 </menu>

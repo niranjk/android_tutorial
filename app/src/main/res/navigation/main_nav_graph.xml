@@ -15,6 +15,9 @@
     <activity android:id="@+id/priceCalculatorActivity"
               android:name="com.niranjan.androidtutorials.price.PriceCalculatorActivity"
               android:label="PriceCalculatorActivity"/>
+    <activity android:id="@+id/runnerActivity"
+              android:name="com.niranjan.androidtutorials.runner.RunnerActivity"
+              android:label="RunnerActivity"/>
 
 
 </navigation>

@@ -5,6 +5,7 @@ ext {
     appcompat_version = '1.5.1'
     material_version = '1.6.1'
     constraint_version = '2.1.4'
+    lifecycle_version = '2.6.0-alpha02'
 }
 
 buildscript {

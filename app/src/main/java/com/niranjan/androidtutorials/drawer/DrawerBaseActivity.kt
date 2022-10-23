@@ -77,6 +77,14 @@ open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedLis
                     )
                 )
             }
+            R.id.runnerActivity -> {
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_RUNNER_ACTIVITY
+                    )
+                )
+            }
         }
         return false
     }

@@ -36,6 +36,10 @@
     <string name="title_quiz_question">Quiz Question (%1$d/%2$d)</string>
     <string name="submit_button">Submit</string>
 
+    <!-- StopWatch App Text-->
+    <string name="label_runner_app">Runner</string>
+    <string name="label_stop_watch_start_timer">Start Timer</string>
+    <string name="label_stop_watch_stop_timer">Stop Timer</string>
 
     <!-- Drawer Layout-->
     <string name="label_drawer_open">Drawer Open</string>

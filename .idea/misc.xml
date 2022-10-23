@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/ic_about.xml" value="0.318974358974359" />
         <entry key="app/src/main/res/drawable/ic_contact_support.xml" value="0.318974358974359" />
         <entry key="app/src/main/res/drawable/ic_round_up.xml" value="0.11388888888888889" />
+        <entry key="app/src/main/res/drawable/ic_runner.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/ic_service.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_store.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/layout/activity_container_main_layout.xml" value="0.1" />
@@ -15,7 +16,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_price_layout.xml" value="0.19747899159663865" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_runner.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_slot.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_stopwatch.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_aboutinfo.xml" value="0.29257246376811596" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.300509337860781" />
         <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.25" />

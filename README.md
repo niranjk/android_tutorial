@@ -33,7 +33,6 @@ Navigation Drawer
 BottomNavigationView
 
 
-
 # LifecycleDemoActivity
 - Activity Life Cycle 
 - Save Activity State 
@@ -41,6 +40,14 @@ BottomNavigationView
 # LifecycleDemoFragment 
 - Fragment Life Cycle 
 - Saving Fragment State 
+
+# Lifecycle Aware Components  - Runner App 
+- androidx.lifecycle Library 
+- Lifecycle class 
+- LifecycleOwner class 
+- LifecycleEventObserver class 
+- App Permission Handling 
+- LocationListener
 
 
 
