@@ -49,4 +49,12 @@
     <string name="label_options_menu_about">About</string>
     <string name="label_options_menu_contacts">Contacts</string>
 
+    <!--Notes App String-->
+    <string name="label_notes_app">Notes</string>
+    <string name="label_new_notes">New Notes</string>
+    <string name="hint_word">Word…</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="add_word">Add word</string>
+
 </resources>

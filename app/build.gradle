@@ -9,7 +9,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'kotlin-kapt'  // Kotlin Annotation Processor
     id 'androidx.navigation.safeargs'
 }
 // 2. DEFINE ANDROID PROPERTIES
@@ -40,11 +40,12 @@ android {
         buildConfigField("String", "DF_QUIZ_ACTIVITY", df_quiz_activity)
         buildConfigField("String", "DF_MAIN_ACTIVITY", df_main_activity)
         buildConfigField("String", "DF_RUNNER_ACTIVITY", df_runner_activity)
+        buildConfigField("String", "DF_NOTES_ACTIVITY", df_notes_activity)
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -63,9 +64,14 @@ android {
 dependencies {
     implementation "androidx.core:core-ktx:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
+    // UI
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
-    
+
+    // Kotlin components
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
     // Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -77,6 +83,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
+    // Room components
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 
 
     testImplementation 'junit:junit:4.13.2'

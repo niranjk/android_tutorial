@@ -1,11 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 ext {
-    nav_version = '2.5.2'
+    nav_version = '2.5.3'
     kotlin_version = '1.9.0'
     appcompat_version = '1.5.1'
-    material_version = '1.6.1'
+    material_version = '1.7.0'
     constraint_version = '2.1.4'
-    lifecycle_version = '2.6.0-alpha02'
+    lifecycle_version = '2.6.0-alpha03'
+    roomVersion = '2.4.3'
+    coroutines = '1.6.0'
 }
 
 buildscript {
