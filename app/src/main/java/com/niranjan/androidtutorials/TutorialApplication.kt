@@ -9,7 +9,6 @@ import kotlinx.coroutines.SupervisorJob
 class TutorialApplication : Application() {
     // this scope will be torn down with the process
     val applicationScope = CoroutineScope(SupervisorJob())
-
     /***
      * Lazily create database and repository so that the instance is created
      * when needed rather than when application starts

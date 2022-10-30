@@ -4,14 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+
+
 import kotlinx.coroutines.flow.Flow
-
-/***
- * DAO (Data Access Object) : here you specify SQL Queries and associate them
- * with method calls.
- * Room has kotlin coroutine support.
- */
-
 
 /***
  * Flow is an async sequence of values
@@ -19,6 +14,10 @@ import kotlinx.coroutines.flow.Flow
  * from async operations like network requests, database calls, or other async code.
  * Flow support coroutines, so you can transform flow using coroutines also.
  */
+interface NotesInterface {
+    fun getNotes(): Flow<List<NotesEntity>>
+}
+
 @Dao
 interface NotesDao {
     @Query("SELECT * FROM notes_table ORDER BY note ASC")

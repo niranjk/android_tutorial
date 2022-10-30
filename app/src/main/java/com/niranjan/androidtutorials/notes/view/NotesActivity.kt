@@ -19,6 +19,11 @@ class NotesActivity : DrawerBaseActivity() {
 
     lateinit var notesBinding: ActivityNotesBinding
     private var notesAdapter = NotesAdapter()
+
+    /***
+     * To create the ViewModel we use the viewModels delegate,
+     * passing in instance of NotesViewModelFactory.
+     */
     private val notesViewModel: NotesViewModel by viewModels {
         NotesViewModelFactory(
             (application as TutorialApplication).notesRepository

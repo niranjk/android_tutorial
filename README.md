@@ -49,12 +49,13 @@ BottomNavigationView
 - App Permission Handling 
 - LocationListener
 
-# Android Architecture Components - Notes App 
-- https://developer.android.com/codelabs/android-room-with-a-view-kotlin#0
-- https://developer.android.com/codelabs/advanced-kotlin-coroutines#0
+# Android Architecture Components - Notes App
 - Room DB 
-- Coroutines 
-- 
+- Coroutines & Flow 
+- ViewModel & ViewModelFactory
+- LiveData
+- Repository
+- StartActivityForResult
 
 
 
