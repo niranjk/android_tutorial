@@ -8,6 +8,18 @@ ext {
     lifecycle_version = '2.6.0-alpha03'
     roomVersion = '2.4.3'
     coroutines = '1.6.0'
+    def gson_version = '2.9.0'
+    def retrofit_gson_version = '2.9.0'
+    def retrofit_version = '2.9.0'
+    def work_version = '2.7.1'
+
+    network_libraries = [
+            "androidx.work:work-runtime-ktx:$work_version",
+            // network & serialization
+            "com.google.code.gson:gson:$gson_version",
+            "com.squareup.retrofit2:converter-gson:$retrofit_gson_version",
+            "com.squareup.retrofit2:retrofit:$retrofit_version",
+    ]
 }
 
 buildscript {

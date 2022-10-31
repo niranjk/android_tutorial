@@ -93,6 +93,14 @@ open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedLis
                     )
                 )
             }
+            R.id.quotesActivity -> {
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_QUOTES_ACTIVITY
+                    )
+                )
+            }
         }
         return false
     }

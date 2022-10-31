@@ -27,4 +27,9 @@
             android:icon="@drawable/ic_add"
             android:title="@string/label_notes_app"
     />
+    <item
+            android:id="@+id/quotesActivity"
+            android:icon="@drawable/ic_quotes"
+            android:title="@string/label_quotes_app"
+    />
 </menu>

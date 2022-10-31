@@ -57,5 +57,13 @@ BottomNavigationView
 - Repository
 - StartActivityForResult
 
+# Advanced Coroutine - Quotes App
+- Callbacks 
+- Coroutines 
+- Retrofit 
+- Gson Converter
+- Gson Serialization 
+- WorkManager
+
 
 

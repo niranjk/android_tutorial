@@ -27,6 +27,7 @@
         <activity android:name=".runner.RunnerActivity" />
         <activity android:name=".notes.view.NotesActivity" />
         <activity android:name=".notes.view.NewNotesActivity" />
+        <activity android:name=".quotes.view.QuotesActivity" />
     </application>
 
 </manifest>
