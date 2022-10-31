@@ -20,7 +20,9 @@ data class Quote(
 @Dao
 interface QuotesDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertQuote(quote: Quote)
+    fun insertQuoteCallbacks(quote: Quote)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertQuote(quote: Quote)
     @get:Query("select * from Quote where id = 0")
     val quoteLiveData: LiveData<Quote?>
 }

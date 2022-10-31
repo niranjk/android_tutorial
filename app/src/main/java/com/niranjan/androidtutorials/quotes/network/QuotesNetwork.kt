@@ -11,7 +11,10 @@ import retrofit2.http.GET
  */
 interface QuotesNetwork {
     @GET("quotes.json")
-    fun fetchQuotes(): Call<String>
+    fun fetchQuotesCallback(): Call<String>
+
+    @GET("quotes.json")
+    suspend fun fetchQuotes(): String
 }
 
 val quotesNetworkService : QuotesNetwork by lazy {

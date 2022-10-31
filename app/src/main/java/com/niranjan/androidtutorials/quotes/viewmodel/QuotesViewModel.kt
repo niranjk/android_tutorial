@@ -3,9 +3,13 @@ package com.niranjan.androidtutorials.quotes.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.niranjan.androidtutorials.quotes.model.QuoteRefreshCallback
+import com.niranjan.androidtutorials.quotes.model.QuoteRefreshError
 import com.niranjan.androidtutorials.quotes.model.QuotesRepository
 import com.niranjan.androidtutorials.quotes.network.BACKGROUND
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * QuotesViewModel designed to store and manage UI-related data in a lifecycle conscious way. This
@@ -87,12 +91,19 @@ class QuotesViewModel(
     /**
      * Wait one-second then update the tap count.
      */
-    private fun updateTaps() {
-        // TODO: Convert updateTaps to use coroutines
+    private fun updateTapsCallbacks() {
+        //Convert updateTaps to use coroutines
         tapCount++
         BACKGROUND.submit {
             Thread.sleep(1_000)
             _taps.postValue("${tapCount} taps")
+        }
+    }
+
+    private fun updateTaps(){
+        viewModelScope.launch {
+            delay(1_000)
+            _taps.value = "${++tapCount} taps"
         }
     }
 
@@ -106,18 +117,46 @@ class QuotesViewModel(
     /**
      * Refresh the title, showing a loading spinner while it refreshes and errors via snackbar.
      */
-    fun refreshQuote() {
-        // TODO: Convert refreshTitle to use coroutines
+    fun refreshQuoteCallbacks() {
+        // Convert refreshQuote to use coroutines
         _spinner.value = true
         repository.refreshQuoteWithCallbacks(object : QuoteRefreshCallback {
+            // when the result is ready this callback will get the result
             override fun onCompleted() {
                 _spinner.postValue(false)
             }
-
             override fun onError(cause: Throwable) {
                 _snackBar.postValue(cause.message)
                 _spinner.postValue(false)
             }
         })
+    }
+
+    fun refreshQuote()= launchDataLoad{
+        repository.refreshQuotes()
+    }
+
+    /**
+     * Helper function to call a data load function with a loading spinner, errors will trigger a
+     * snackbar.
+     *
+     * By marking `block` as `suspend` this creates a suspend lambda which can call suspend
+     * functions.
+     *
+     * @param block lambda to actually load data. It is called in the viewModelScope. Before calling the
+     *              lambda the loading spinner will display, after completion or error the loading
+     *              spinner will stop
+     */
+    private fun launchDataLoad(block: suspend () -> Unit): Unit {
+        viewModelScope.launch {
+            try {
+                _spinner.value = true
+                block()
+            } catch (error: QuoteRefreshError){
+                _snackBar.value = error.message
+            } finally {
+                _spinner.value = false
+            }
+        }
     }
 }

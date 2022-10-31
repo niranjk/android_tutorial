@@ -6,6 +6,10 @@ import com.niranjan.androidtutorials.quotes.db.Quote
 import com.niranjan.androidtutorials.quotes.db.QuotesDao
 import com.niranjan.androidtutorials.quotes.network.BACKGROUND
 import com.niranjan.androidtutorials.quotes.network.QuotesNetwork
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 
 /**
  * QuotesRepository provides an interface to fetch a quote or request a new one be generated.
@@ -28,9 +32,6 @@ class QuotesRepository(val network: QuotesNetwork, val quotesDao: QuotesDao) {
      */
     val quote: LiveData<String?> = quotesDao.quoteLiveData.map { it?.quote }
 
-
-    // TODO: Add coroutines-based `fun refreshTitle` here
-
     /**
      * Refresh the current quote and save the results to the offline cache.
      *
@@ -42,10 +43,10 @@ class QuotesRepository(val network: QuotesNetwork, val quotesDao: QuotesDao) {
         BACKGROUND.submit {
             try {
                 // Make network request using a blocking call
-                val result = network.fetchQuotes().execute()
+                val result = network.fetchQuotesCallback().execute()
                 if (result.isSuccessful) {
                     // Save it to database
-                    result.body()?.let { Quote(quote = it) }?.let { quotesDao.insertQuote(it) }
+                    result.body()?.let { Quote(quote = it) }?.let { quotesDao.insertQuoteCallbacks(it) }
                     // Inform the caller the refresh is completed
                     titleRefreshCallback.onCompleted()
                 } else {
@@ -60,6 +61,43 @@ class QuotesRepository(val network: QuotesNetwork, val quotesDao: QuotesDao) {
             }
         }
     }
+    // Add coroutines-based `fun refreshQuotes` here
+    /**
+     * Refresh the current title and save the results to the offline cache.
+     *
+     * This method does not return the new title. Use [QuotesRepository.quote] to observe
+     * the current tile.
+     */
+    suspend fun refreshQuotes(){
+        try {
+            val result = withTimeout(1_000) {
+                network.fetchQuotes()
+            }
+            quotesDao.insertQuote(Quote(quote = result))
+        }catch (error: Throwable){
+            throw QuoteRefreshError("Unable to refresh quotes", error)
+        }
+    }
+
+    /**
+     * This API is exposed for callers from the Java Programming language.
+     *
+     * The request will run unstructured, which means it won't be able to be cancelled.
+     *
+     * @param quotesRefreshCallback a callback
+     */
+    fun refreshQuoteInterop(quotesRefreshCallback: QuoteRefreshCallback) {
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
+            try {
+                refreshQuotes()
+                quotesRefreshCallback.onCompleted()
+            } catch (throwable: Throwable) {
+                quotesRefreshCallback.onError(throwable)
+            }
+        }
+    }
+
 }
 
 /**

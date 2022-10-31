@@ -5,6 +5,9 @@ import androidx.work.CoroutineWorker
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
+import com.niranjan.androidtutorials.quotes.db.getQuotesDatabase
+import com.niranjan.androidtutorials.quotes.model.QuoteRefreshError
+import com.niranjan.androidtutorials.quotes.model.QuotesRepository
 
 /**
  * Worker job to refresh titles from the network while the app is in the background.
@@ -23,7 +26,18 @@ class RefreshMainDataWork(context: Context, params: WorkerParameters, private va
      * start just enough to run this [Worker].
      */
     override suspend fun doWork(): Result {
-        return Result.success()         // TODO: Use coroutines from WorkManager
+        //Use coroutines from WorkManager
+        val database = getQuotesDatabase(applicationContext)
+        val repository = QuotesRepository(
+            network,
+            database.quotesDao
+        )
+        return try {
+            repository.refreshQuotes()
+            Result.success()
+        } catch (error: QuoteRefreshError){
+            Result.failure()
+        }
     }
 
     class Factory(val network: QuotesNetwork = getService()) : WorkerFactory() {
