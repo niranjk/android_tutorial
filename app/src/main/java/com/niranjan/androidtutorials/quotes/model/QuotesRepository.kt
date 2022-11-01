@@ -6,10 +6,7 @@ import com.niranjan.androidtutorials.quotes.db.Quote
 import com.niranjan.androidtutorials.quotes.db.QuotesDao
 import com.niranjan.androidtutorials.quotes.network.BACKGROUND
 import com.niranjan.androidtutorials.quotes.network.QuotesNetwork
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.*
 
 /**
  * QuotesRepository provides an interface to fetch a quote or request a new one be generated.
@@ -70,13 +67,47 @@ class QuotesRepository(val network: QuotesNetwork, val quotesDao: QuotesDao) {
      */
     suspend fun refreshQuotes(){
         try {
-            val result = withTimeout(1_000) {
+            val result = withTimeout(5_000) {
                 network.fetchQuotes()
             }
             quotesDao.insertQuote(Quote(quote = result))
         }catch (error: Throwable){
             throw QuoteRefreshError("Unable to refresh quotes", error)
         }
+    }
+
+    /**
+    suspend fun fetchData() {
+        val data = getData("...") // <-- suspend until you get data
+        show(data) // <--- resume after you get data
+    }
+    */
+
+    /***
+     * Interacting with *Blocking* network and IO Calls using Coroutines
+     */
+    suspend fun refreshQuotesWithContext(){
+        // Starts on Dispatchers.Main
+        withContext(Dispatchers.IO) {
+            // switches to Dispatchers.IO just within this lambda and return result of the
+            // lambda to the dispatcher.Main where it is started
+            val result = try {
+                // make network request using a blocking call
+                network.fetchQuotesCallback().execute()
+            } catch (cause: Throwable){
+                // inform the caller when network throws exceptions
+                throw QuoteRefreshError("Unable to refresh quotes", cause)
+            }
+
+            if (result.isSuccessful){
+                // save it to database
+                quotesDao.insertQuote(Quote(quote = result.body()!!))
+            } else {
+                // inform the caller of error
+                throw QuoteRefreshError("Unable to refresh quotes", null)
+            }
+        }
+        // Returns to Dispatchers.Main
     }
 
     /**

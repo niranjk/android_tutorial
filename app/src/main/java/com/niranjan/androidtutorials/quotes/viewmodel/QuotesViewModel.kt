@@ -136,17 +136,6 @@ class QuotesViewModel(
         repository.refreshQuotes()
     }
 
-    /**
-     * Helper function to call a data load function with a loading spinner, errors will trigger a
-     * snackbar.
-     *
-     * By marking `block` as `suspend` this creates a suspend lambda which can call suspend
-     * functions.
-     *
-     * @param block lambda to actually load data. It is called in the viewModelScope. Before calling the
-     *              lambda the loading spinner will display, after completion or error the loading
-     *              spinner will stop
-     */
     private fun launchDataLoad(block: suspend () -> Unit): Unit {
         viewModelScope.launch {
             try {
@@ -158,5 +147,20 @@ class QuotesViewModel(
                 _spinner.value = false
             }
         }
+
+        /***
+         **  Use launch or async to start child coroutines
+        viewModelScope.launch {
+            // starting a coroutine from a non-coroutine start with launch
+            // this way the uncaught exceptions are automatically handled by
+            // uncaught exception handlers..
+            // use launch for when you don't have to return result
+        }
+        viewModelScope.async {
+            // coroutine started with async won't throw an exception to its caller
+            // until you call await from inside a coroutine.
+            // use async when you have to return result
+        }
+         */
     }
 }

@@ -13,6 +13,11 @@ interface QuotesNetwork {
     @GET("quotes.json")
     fun fetchQuotesCallback(): Call<String>
 
+    /***
+     * Retrofit 2.6.0 or higher supports coroutines
+     * This suspend funciton is main-safe so you can call
+     * easily from Dispatchers.Main
+     */
     @GET("quotes.json")
     suspend fun fetchQuotes(): String
 }
