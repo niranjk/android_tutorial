@@ -32,4 +32,9 @@
             android:icon="@drawable/ic_quotes"
             android:title="@string/label_quotes_app"
     />
+    <item
+            android:id="@+id/plantsActivity"
+            android:icon="@drawable/ic_plants"
+            android:title="@string/label_plants_app"
+    />
 </menu>

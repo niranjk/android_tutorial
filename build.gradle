@@ -12,6 +12,7 @@ ext {
     def retrofit_gson_version = '2.9.0'
     def retrofit_version = '2.9.0'
     def work_version = '2.7.1'
+    coil_version = '1.4.0'
 
     network_libraries = [
             "androidx.work:work-runtime-ktx:$work_version",

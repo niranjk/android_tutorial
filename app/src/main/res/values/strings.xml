@@ -61,4 +61,6 @@
     <string name="label_quotes_app">Quotes</string>
     <string name="label_tap_to_new_quotes">Tap to see new Quotes!</string>
 
+    <!--Plants App String-->
+    <string name="label_plants_app">Plants</string>
 </resources>

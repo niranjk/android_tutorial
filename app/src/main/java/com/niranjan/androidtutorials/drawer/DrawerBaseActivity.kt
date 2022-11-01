@@ -101,6 +101,14 @@ open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedLis
                     )
                 )
             }
+            R.id.plantsActivity -> {
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_PLANTS_ACTIVITY
+                    )
+                )
+            }
         }
         return false
     }
