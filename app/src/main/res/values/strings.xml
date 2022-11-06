@@ -63,4 +63,6 @@
 
     <!--Plants App String-->
     <string name="label_plants_app">Plants</string>
+    <string name="label_filter_zone">Filter Zone</string>
+    <string name="label_no_filter_zone">No Filter Zone</string>
 </resources>

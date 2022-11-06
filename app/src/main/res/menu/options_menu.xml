@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/nav_about_fragment"
-        android:icon="@drawable/ic_about"
-        android:title="@string/label_options_menu_about"/>
+            android:id="@+id/about_fragment"
+            android:icon="@drawable/ic_about"
+            android:title="@string/label_options_menu_about"
+            app:itemTextColor="@color/blue"
+    />
     <item
-        android:id="@+id/nav_contacts"
-        android:icon="@drawable/ic_contact_support"
-        android:title="@string/label_options_menu_contacts"
+            android:id="@+id/no_filter_zone"
+            android:icon="@drawable/ic_contact_support"
+            android:title="@string/label_no_filter_zone"
+            app:itemTextColor="@color/blue"
+    />
+    <item
+            android:id="@+id/filter_zone"
+            android:icon="@drawable/ic_filter_zone_plants"
+            android:title="@string/label_filter_zone"
+            app:itemTextColor="@color/blue"
     />
 </menu>

@@ -72,6 +72,8 @@ BottomNavigationView
 - set MutableLiveData and observe LiveData 
 - Declarative API of Flow  
 - Declarative Operators: combine, flowOn, conflate 
+- MenuProvider 
+- Switching between two flows using flatMapLatest 
 
 
 

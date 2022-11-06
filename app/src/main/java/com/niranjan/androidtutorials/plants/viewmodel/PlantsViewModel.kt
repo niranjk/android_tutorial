@@ -6,6 +6,8 @@ import com.niranjan.androidtutorials.plants.model.NoGrowZone
 import com.niranjan.androidtutorials.plants.model.Plants
 import com.niranjan.androidtutorials.plants.model.PlantsRepository
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import java.util.concurrent.Flow
 
@@ -43,7 +45,6 @@ class PlantsViewModel(
      * The current growZone selection.
      */
     private val growZone = MutableLiveData<GrowZone>(NoGrowZone)
-
     /**
      * A list of plants that updates based on the current filter.
      */
@@ -53,6 +54,30 @@ class PlantsViewModel(
         } else {
             plantsRepository.getPlantsWithGrowZone(growZone)
         }
+    }
+
+    /**
+     * Switching between two flows
+     *
+     * Let's understand the types of flow
+     * 1. flow created by flow{} builder : cold flows which only execute when they're collected.
+     * 2. [StateFlow] : created with an initial value and keeps its state same even without being collected and between
+     * subsequent collections
+     * 3. [MutableStateFlow] : change the value(state) of [StateFlow]
+     *
+     * [flatMapLatest] is a Flow's extension function that allow us to switch between multiple flows.
+     */
+
+    private val growZoneFlow = MutableStateFlow<GrowZone>(NoGrowZone)
+
+    val plantsUsingFlowLiveData: LiveData<List<Plants>> = growZoneFlow.flatMapLatest { growZone ->
+        if (growZone == NoGrowZone) plantsRepository.plantsFlow
+        else plantsRepository.getPlantsWithGrowZoneFlow(growZone)
+    }.asLiveData()
+
+    val plantsUsingFlow = growZoneFlow.flatMapLatest { growZone ->
+        if (growZone == NoGrowZone) plantsRepository.plantsFlow
+        else plantsRepository.getPlantsWithGrowZoneFlow(growZone)
     }
 
     /**
@@ -91,10 +116,14 @@ class PlantsViewModel(
      * updating the growth zone will automatically kick off a network request.
      */
     fun setGrowZoneNumber(num: Int) {
-        growZone.value = GrowZone(num)
+        // growZone.value = GrowZone(num)
+        growZoneFlow.value = GrowZone(num)
 
         // initial code version, will move during flow rewrite
-        launchDataLoad { plantsRepository.tryUpdateRecentPlantsCache() }
+        launchDataLoad {
+            plantsRepository.tryUpdateRecentPlantsCache()
+            plantsRepository.tryUpdateRecentPlantsForGrowZoneCache(GrowZone(num))
+        }
     }
 
     /**
@@ -105,6 +134,7 @@ class PlantsViewModel(
      */
     fun clearGrowZoneNumber() {
         growZone.value = NoGrowZone
+        growZoneFlow.value = NoGrowZone
 
         // initial code version, will move during flow rewrite
         launchDataLoad { plantsRepository.tryUpdateRecentPlantsCache() }
