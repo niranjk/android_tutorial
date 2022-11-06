@@ -7,6 +7,7 @@ import com.niranjan.androidtutorials.plants.model.Plants
 import com.niranjan.androidtutorials.plants.model.PlantsRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.concurrent.Flow
 
 class PlantsViewModel(
     private val plantsRepository: PlantsRepository
@@ -54,12 +55,31 @@ class PlantsViewModel(
         }
     }
 
-    // todo use flow
+    /**
+     * Using Flow in [ViewModel]
+     * Using [LiveData] in UI Layer because it survives configuration changes.
+     * We do not need to restart our query everytime the configuration changes.
+     * @param asLiveData operator helps to convert [Flow] into a [LiveData] with configurable timeout.
+     * This timeout will help the Flow survive restart.
+     * If another screen observes before the timeout, the Flow won't be cancelled.
+     */
+    val plantsUsingFlowConvertingToLiveData : LiveData<List<Plants>> =
+        plantsRepository.plantsFlow.asLiveData()
 
+    /**
+     * Using [Flow] in UI Layer and collecting it
+     * Flow offers main-safety and the ability to cancel, you can choose to pass the Flow all
+     * the way through to the UI layer without converting to the LiveData.
+     */
+    val plantsUsingFlowOnly  = plantsRepository.plantsFlow
 
     init {
         // When creating a new ViewModel, clear the growth zone and perform any related udpates
         clearGrowZoneNumber()
+        // fetch the full plant list
+        launchDataLoad {
+            plantsRepository.tryUpdateRecentPlantsCache()
+        }
     }
 
     /**

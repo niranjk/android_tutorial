@@ -11,6 +11,7 @@ import com.niranjan.androidtutorials.plants.network.CacheOnSuccess
 import com.niranjan.androidtutorials.plants.network.NetworkService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 /**
@@ -33,6 +34,12 @@ class PlantsRepository private constructor(
      * Returns a LiveData-wrapped List of Plants.
      */
     val plants = plantDao.getPlants()
+
+    /**
+     * Using Flow in [PlantsRepository]
+     */
+    val plantsFlow: Flow<List<Plants>>
+        get() = plantDao.getPlantsFlow()
 
     /**
      * You can emit multiple values from a LiveData by calling the emitSource() function
@@ -78,6 +85,13 @@ class PlantsRepository private constructor(
      */
     fun getPlantsWithGrowZone(growZone: GrowZone) =
         plantDao.getPlantsWithGrowZoneNumber(growZone.number)
+
+    /**
+     * Get Plants With Grow Zone Flow
+     */
+
+    fun getPlantsWithGrowZoneFlow(growZone: GrowZone) =
+        plantDao.getPlantsWithGrowZoneNumberFlow(growZone.number)
 
     // sort plants with grow zone
     fun getSortedPlantsWithGrowZone(growZone: GrowZone) = liveData<List<Plants>> {

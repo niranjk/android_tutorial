@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.niranjan.androidtutorials.databinding.FragmentPlantsBinding
 import com.niranjan.androidtutorials.plants.model.PlantsRepository
@@ -15,6 +16,8 @@ import com.niranjan.androidtutorials.plants.viewmodel.Injector
 import com.niranjan.androidtutorials.plants.viewmodel.PlantsViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class PlantsFragment : Fragment() {
     private val viewModel: PlantsViewModel by viewModels {
@@ -49,10 +52,29 @@ class PlantsFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * 1st Approach : Using LiveData Only
+     *
+     * 2nd Approach : Using Flow converted to LiveData
+     *
+     * 3rd Approach : Using Flow Only all the way through the UI
+     */
     private fun subscribeUi(adapter: PlantsAdapter) {
-        // todo use flow
+        /*
+        // 1st Approach
         viewModel.plants.observe(viewLifecycleOwner) { plants ->
             adapter.submitList(plants)
+        }
+        // 2nd Approach
+        viewModel.plantsUsingFlowConvertingToLiveData.observe(viewLifecycleOwner){ plants ->
+            adapter.submitList(plants)
+        }
+         */
+        // 3rd Approach
+        lifecycleScope.launch {
+            viewModel.plantsUsingFlowOnly.collect{ plantsList ->
+                adapter.submitList(plantsList)
+            }
         }
     }
 
