@@ -66,7 +66,11 @@ BottomNavigationView
 - WorkManager
 
 # Advanced Coroutines - Plants App 
-- Coroutine Flow
+- Advanced LiveData
+- MutableLiveData
+- Transformations with map and switchMap
+- set MutableLiveData and observe LiveData 
+- 
 
 
 

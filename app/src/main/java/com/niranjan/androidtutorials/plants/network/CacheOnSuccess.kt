@@ -122,3 +122,14 @@ class CacheOnSuccess<T: Any>(
     }
 
 }
+
+
+/***
+ * Note *
+ * We use the CacheOnSuccess utility class to handle caching.
+ * Here we abstract away the details of how we implement the caching, so the application
+ * code is straightforward.
+ * ChangeOnSuccess is already well tested.
+ * It's a good idea to introduce similar high-level abstractions in your code when using
+ * kotlinx-coroutines.
+ */

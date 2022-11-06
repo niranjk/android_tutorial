@@ -15,14 +15,18 @@ class PlantsViewModel(
      * Request a snack-bar to display a string.
      *
      * This variable is private because we don't want to expose [MutableLiveData].
-     *
      * MutableLiveData allows anyone to set a value, and [PlantsViewModel] is the only
      * class that should be setting values.
+     * @param getValue()
+     * @param postValue(value: T)
+     * @param setValue(value: T)
      */
     private val _snackbar = MutableLiveData<String?>()
 
     /**
-     * Request a snack-bar to display a string.
+     * public immutable [LiveData] that allows anyone to observer the values.
+     * @param getValue()
+     * ViewModel only exposes the immutable [LiveData] object to the observers.
      */
     val snackbar: LiveData<String?>
         get() = _snackbar
@@ -44,7 +48,7 @@ class PlantsViewModel(
      */
     val plants: LiveData<List<Plants>> = growZone.switchMap { growZone ->
         if (growZone == NoGrowZone) {
-            plantsRepository.plants
+            plantsRepository.sortedPlants
         } else {
             plantsRepository.getPlantsWithGrowZone(growZone)
         }
@@ -90,6 +94,12 @@ class PlantsViewModel(
     fun isFiltered() = growZone.value != NoGrowZone
 
     /**
+     * Set Value to [MutableLiveData] in ViewModel.
+     */
+    fun onSnackbarShowWithErrorMessage(error: String?) {
+        _snackbar.value = error
+    }
+    /**
      * Called immediately after the UI shows the snackbar.
      */
     fun onSnackbarShown() {
@@ -113,7 +123,8 @@ class PlantsViewModel(
                 _spinner.value = true
                 block()
             } catch (error: Throwable) {
-                _snackbar.value = error.message
+                onSnackbarShowWithErrorMessage(error.message)
+                // _snackbar.value = error.message
             } finally {
                 _spinner.value = false
             }
