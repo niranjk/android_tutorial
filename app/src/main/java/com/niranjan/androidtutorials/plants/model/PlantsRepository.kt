@@ -11,7 +11,7 @@ import com.niranjan.androidtutorials.plants.network.CacheOnSuccess
 import com.niranjan.androidtutorials.plants.network.NetworkService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 
 /**
@@ -30,16 +30,78 @@ class PlantsRepository private constructor(
 ) {
 
     /**
-     * Fetch a list of [Plants]s from the database.
-     * Returns a LiveData-wrapped List of Plants.
+     * Custom Sorting a Plant
+     * Rules *
+     * 1. List Certain Plants First (Orange, Sunflower, Grape, Avocado)
+     * 2. Then List the Plants in Alphabetical Order
+
+     * plantsListSortOrderCache is used as the in-memory cache for the custom sort order.
+     * It will fallback to an empty list if there's a network error, so that our app
+     * can display data even if the sorting order isn't fetched.
      */
-    val plants = plantDao.getPlants()
+    private var plantsListSortOrderCache =
+        CacheOnSuccess(onErrorFallback = {
+            listOf<String>()
+        }){
+            plantService.customPlantSortOrder()
+        }
+
+    /**
+     * Custom Sort Flow :
+     * Create a flow, when collected will call getOrWait and emit the sort order.
+     */
+    private val customSortFlow = flow { emit(plantsListSortOrderCache.getOrAwait()) }
+
+    /**
+     * since the flow only emit a singe value : you can build directly from
+     * [getOrAwait] and [asFlow]
+     */
+    private val alternativeCustomSortFlow = plantsListSortOrderCache::getOrAwait.asFlow()
 
     /**
      * Using Flow in [PlantsRepository]
      */
     val plantsFlow: Flow<List<Plants>>
         get() = plantDao.getPlantsFlow()
+
+    /**
+     * Let's combine [plantsFlow] and [customSortFlow] declaratively using transforms [combine]
+     *
+     * when the result of [customSortFlow] is available, this will combine with the latest value from [plantsFlow]
+     *
+     * As long as both `plants` and `sortOrder` have initial values (their flow has emitted at least one value)
+     * any change in either `plants` and `sortOrder` will call `plants.applySort(order)`
+     */
+
+    /**
+     * The operator [flowOn] launches a new coroutine to collect the flow and introduces a buffer to write the results.
+     *
+     * The operator [conflate] will say to store only the most recent result.
+     */
+    val combinedPlantsFlow : Flow<List<Plants>>
+        get() = plantDao.getPlantsFlow()
+            .combine(customSortFlow) { plants, sortOrder ->
+                plants.applySort(sortOrder)
+            }
+            .flowOn(defaultDispatcher)
+            .conflate()
+
+
+    /**
+     * Fetch a list of [Plants]s from the database.
+     * Returns a LiveData-wrapped List of Plants.
+     */
+    val plants = plantDao.getPlants()
+
+    // apply custom sort order to list
+    val plantsCustomSorted : LiveData<List<Plants>> = liveData {
+        // Observer plants from the db (just like a normal LiveData + Room return)
+        val plantsLiveData = plantDao.getPlants()
+        // fetch custom sort from the network in a main-safe suspending call (cached)
+        val customSortOrder = plantsListSortOrderCache.getOrAwait()
+        // map the LiveData, applying the sort
+        emitSource(plantsLiveData.map { plantsList -> plantsList.applySort(customSortOrder) })
+    }
 
     /**
      * You can emit multiple values from a LiveData by calling the emitSource() function
@@ -158,25 +220,6 @@ class PlantsRepository private constructor(
                 instance ?: PlantsRepository(plantDao, plantService).also { instance = it }
             }
     }
-
-    /***
-     * Custom Sorting a Plant
-     * Rules *
-     * 1. List Certain Plants First (Orange, Sunflower, Grape, Avocado)
-     * 2. Then List the Plants in Alphabetical Order
-     */
-
-    /**
-     * plantsListSortOrderCache is used as the in-memory cache for the custom sort order.
-     * It will fallback to an empty list if there's a network error, so that our app
-     * can display data even if the sorting order isn't fetched.
-     */
-    private var plantsListSortOrderCache =
-        CacheOnSuccess(onErrorFallback = {
-            listOf<String>()
-        }){
-            plantService.customPlantSortOrder()
-        }
 
     private fun List<Plants>.applySort(customSortOrder: List<String>): List<Plants> {
         return sortedBy { plants ->

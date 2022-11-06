@@ -70,7 +70,8 @@ BottomNavigationView
 - MutableLiveData
 - Transformations with map and switchMap
 - set MutableLiveData and observe LiveData 
-- 
+- Declarative API of Flow  
+- Declarative Operators: combine, flowOn, conflate 
 
 
 

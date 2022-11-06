@@ -72,7 +72,7 @@ class PlantsFragment : Fragment() {
          */
         // 3rd Approach
         lifecycleScope.launch {
-            viewModel.plantsUsingFlowOnly.collect{ plantsList ->
+            viewModel.combinedPlantsFlow.collect{ plantsList ->
                 adapter.submitList(plantsList)
             }
         }

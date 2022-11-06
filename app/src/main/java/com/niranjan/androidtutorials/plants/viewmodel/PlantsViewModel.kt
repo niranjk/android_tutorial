@@ -73,6 +73,8 @@ class PlantsViewModel(
      */
     val plantsUsingFlowOnly  = plantsRepository.plantsFlow
 
+    val combinedPlantsFlow = plantsRepository.combinedPlantsFlow
+
     init {
         // When creating a new ViewModel, clear the growth zone and perform any related udpates
         clearGrowZoneNumber()
