@@ -155,6 +155,23 @@ class PlantsRepository private constructor(
     fun getPlantsWithGrowZoneFlow(growZone: GrowZone) =
         plantDao.getPlantsWithGrowZoneNumberFlow(growZone.number)
 
+    /**
+     * Flow supports coroutines.
+     *
+     * Here we see inside a map operator we can orchestrate multiple async operations
+     * without applying any extra transformations.
+     */
+    fun getPlantsWithGrowZoneFlowCustom(growZone: GrowZone) : Flow<List<Plants>> {
+        return plantDao.getPlantsWithGrowZoneNumberFlow(growZone.number).
+            // declarative
+                map { plantList ->
+                    // imperative code
+                    val sortOrderFromNetwork = plantsListSortOrderCache.getOrAwait()
+                    val nextValue = plantList.applyMainSafeSort(sortOrderFromNetwork)
+                    nextValue
+                }
+    }
+
     // sort plants with grow zone
     fun getSortedPlantsWithGrowZone(growZone: GrowZone) = liveData<List<Plants>> {
         val plantsGrowZoneLiveData = plantDao.getPlantsWithGrowZoneNumber(growZone.number)

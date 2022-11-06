@@ -6,8 +6,7 @@ import com.niranjan.androidtutorials.plants.model.NoGrowZone
 import com.niranjan.androidtutorials.plants.model.Plants
 import com.niranjan.androidtutorials.plants.model.PlantsRepository
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.util.concurrent.Flow
 
@@ -101,12 +100,26 @@ class PlantsViewModel(
     val combinedPlantsFlow = plantsRepository.combinedPlantsFlow
 
     init {
-        // When creating a new ViewModel, clear the growth zone and perform any related udpates
+        // When creating a new ViewModel, clear the growth zone and perform any related updates
         clearGrowZoneNumber()
+        /**
         // fetch the full plant list
-        launchDataLoad {
-            plantsRepository.tryUpdateRecentPlantsCache()
-        }
+        launchDataLoad { plantsRepository.tryUpdateRecentPlantsCache() }
+        */
+        /**
+         * Create a Single Source of Truth
+         */
+        growZoneFlow.mapLatest {growZone ->
+            _spinner.value = true
+            if (growZone == NoGrowZone){
+                plantsRepository.tryUpdateRecentPlantsCache()
+            } else {
+                plantsRepository.tryUpdateRecentPlantsForGrowZoneCache(growZone)
+            }
+        }.onEach { _spinner.value = false }
+            .catch { throwable ->
+                _snackbar.value = throwable.message
+            }.launchIn(viewModelScope)
     }
 
     /**
@@ -120,10 +133,12 @@ class PlantsViewModel(
         growZoneFlow.value = GrowZone(num)
 
         // initial code version, will move during flow rewrite
+        /**
         launchDataLoad {
             plantsRepository.tryUpdateRecentPlantsCache()
             plantsRepository.tryUpdateRecentPlantsForGrowZoneCache(GrowZone(num))
         }
+        */
     }
 
     /**
@@ -137,7 +152,7 @@ class PlantsViewModel(
         growZoneFlow.value = NoGrowZone
 
         // initial code version, will move during flow rewrite
-        launchDataLoad { plantsRepository.tryUpdateRecentPlantsCache() }
+        // launchDataLoad { plantsRepository.tryUpdateRecentPlantsCache() }
     }
 
     /**
