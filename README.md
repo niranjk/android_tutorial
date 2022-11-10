@@ -5,10 +5,13 @@ Android App Tutorials in Kotlin.
 Concepts explained: 
 - RecyclerView 
 - RecyclerView.Adapter
+- ListAdapter
 - RecyclerView.ViewHolder 
 - ConstraintLayout 
 - RandomNumber Generation 
 - DataBinding 
+- Custom Adapter using @BindingAdapter 
+- DiffUtil.ItemCallback
 # Price App 
 Concepts explained: 
 - Handling Keyboard Input KeyEvent 
@@ -73,7 +76,7 @@ BottomNavigationView
 - Declarative API of Flow  
 - Declarative Operators: combine, flowOn, conflate 
 - MenuProvider 
-- Switching between two flows using flatMapLatest 
+- Switching between two flows using flatMapLatest
 
 
 

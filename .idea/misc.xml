@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/layout/fragment_plants.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_quiz_result.xml" value="0.20277777777777778" />
-        <entry key="app/src/main/res/layout/list_item_plant.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/list_item_plant.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recycler_item_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/tip_layout.xml" value="0.25" />
