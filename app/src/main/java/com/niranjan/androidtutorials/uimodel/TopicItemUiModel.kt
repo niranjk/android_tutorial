@@ -1,5 +1,5 @@
 package com.niranjan.androidtutorials.uimodel
 
-data class MainItemUiModel(
-    val title: String = ""
+data class TopicItemUiModel(
+    val topics: String = ""
 ): GenericUiModel()

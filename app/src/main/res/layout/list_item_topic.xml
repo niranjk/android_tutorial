@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="plant"
-                  type="com.niranjan.androidtutorials.plants.model.Plants"/>
     </data>
-    <com.niranjan.androidtutorials.plants.view.MaskedCardView
+    <androidx.cardview.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
@@ -20,43 +18,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <ImageView
-                    android:id="@+id/plant_item_image"
+                    android:id="@+id/topic_item_image"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/plant_item_image_height"
+                    android:layout_height="80dp"
                     android:background="@color/cardview_dark_background"
-                    android:contentDescription="Plant Image Item"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:contentDescription="Topic Image Item"
                     android:scaleType="centerCrop"
-                    app:imageFromUrl="@{plant.imageUrl}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             <TextView
-                    android:id="@+id/plant_item_title"
+                    android:id="@+id/topics_item_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_normal"
                     android:layout_marginTop="@dimen/margin_normal"
-                    android:text="@{plant.name}"
                     android:textAppearance="?attr/textAppearanceListItem"
                     android:gravity="center_horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/plant_item_image"
-                    tools:text="Tomato"/>
-            <TextView
-                    android:id="@+id/plant_item_number"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_normal"
-                    android:layout_marginTop="@dimen/margin_normal"
-                    app:randomNumber="@{true}"
-                    android:textAppearance="?attr/textAppearanceListItem"
-                    android:gravity="center_horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/plant_item_title"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="Random Number"/>
+                    app:layout_constraintTop_toBottomOf="@id/topic_item_image"
+                    tools:text="Topics ..."/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.niranjan.androidtutorials.plants.view.MaskedCardView>
+    </androidx.cardview.widget.CardView>
 </layout>

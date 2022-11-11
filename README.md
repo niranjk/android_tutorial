@@ -12,6 +12,7 @@ Concepts explained:
 - DataBinding 
 - Custom Adapter using @BindingAdapter 
 - DiffUtil.ItemCallback
+- Multiple Item ViewTypes 
 # Price App 
 Concepts explained: 
 - Handling Keyboard Input KeyEvent 

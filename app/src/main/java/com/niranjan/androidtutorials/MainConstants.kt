@@ -9,4 +9,12 @@ object MainConstants {
     }
 
     const val SLOT_EXTRA_KEY = "SLOT_EXTRA_KEY"
+
+    /**
+     * Define the ViewType constants
+     */
+    enum class MainViewType {
+        VIEW_TYPE_APP_TITLE,
+        VIEW_TYPE_TOPICS
+    }
 }

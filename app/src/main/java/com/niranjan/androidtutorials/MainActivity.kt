@@ -60,6 +60,9 @@ class MainActivity : DrawerBaseActivity()
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         allocateActivityTitle(getString(R.string.app_name))
         setContentView(mainBinding.root)
+        with(mainBinding){
+            mainRv.adapter = mainAdapter
+        }
     }
 
     /*
