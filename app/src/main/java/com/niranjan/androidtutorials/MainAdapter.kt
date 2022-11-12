@@ -19,9 +19,7 @@ class MainAdapter(
     private val itemList: List<GenericUiModel>,
     val itemListeners : (title: String) -> Unit // item click listener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    private lateinit var binding : RecyclerItemViewBinding
     override fun getItemCount(): Int = itemList.size
-
     /**
      * Override [getItemViewType] to return the appropriate ViewType based on the UiModel
      * return as a ordinal Int value

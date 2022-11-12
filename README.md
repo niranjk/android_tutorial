@@ -13,6 +13,8 @@ Concepts explained:
 - Custom Adapter using @BindingAdapter 
 - DiffUtil.ItemCallback
 - Multiple Item ViewTypes 
+- LayoutManager: LinearLayoutManager, GridLayoutManager, StaggerdGridLayoutManager
+- Customze your Grid Span Size using @getSpanSize() method 
 # Price App 
 Concepts explained: 
 - Handling Keyboard Input KeyEvent 

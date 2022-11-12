@@ -18,17 +18,15 @@ import com.niranjan.androidtutorials.plants.viewmodel.Injector
 import com.niranjan.androidtutorials.plants.viewmodel.PlantsViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class PlantsFragment : Fragment() {
     private val viewModel: PlantsViewModel by viewModels {
         Injector.providePlantsViewModelFactory(requireContext())
     }
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentPlantsBinding.inflate(inflater, container, false)
         context ?: return binding.root
@@ -47,7 +45,36 @@ class PlantsFragment : Fragment() {
         }
 
         val adapter = PlantsAdapter()
-        binding.plantList.adapter = adapter
+        /*
+        // Note* Use only one LayoutManager at a time
+        //LinearLayoutManager
+        val linearLayoutManager = LinearLayoutManager(context)
+        binding.plantListRv.layoutManager = linearLayoutManager
+
+        //GridLayoutManager
+        val gridLayoutManager = GridLayoutManager(context, 2 )
+        binding.plantListRv.layoutManager = gridLayoutManager
+         */
+        /*
+          GridLayoutManager
+                   val gridLayoutManager = GridLayoutManager(context, 2)
+                   You can also customize the spansize
+                   gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup(){
+                       override fun getSpanSize(position: Int): Int {
+                           return when(position){
+                               0,1 -> 2
+                               else -> 1
+                           }
+                       }
+                   }
+                   plantListRv.layoutManager = gridLayoutManager
+
+        */
+
+        with(binding) {
+            plantListRv.adapter = adapter
+        }
+
         subscribeUi(adapter)
 
         /**
@@ -73,10 +100,12 @@ class PlantsFragment : Fragment() {
                         updateData(9)
                         true
                     }
+
                     R.id.no_filter_zone -> {
                         updateData(-1)
                         true
                     }
+
                     else -> false
                 }
             }
@@ -91,8 +120,7 @@ class PlantsFragment : Fragment() {
      *
      * 3rd Approach : Using Flow Only all the way through the UI
      */
-    private fun subscribeUi(adapter: PlantsAdapter) {
-        /*
+    private fun subscribeUi(adapter: PlantsAdapter) {/*
         // 1st Approach
         viewModel.plants.observe(viewLifecycleOwner) { plants ->
             adapter.submitList(plants)
@@ -104,7 +132,7 @@ class PlantsFragment : Fragment() {
          */
         // 3rd Approach
         lifecycleScope.launch {
-            viewModel.plantsUsingFlow.collect{ plantsList ->
+            viewModel.plantsUsingFlow.collect { plantsList ->
                 adapter.submitList(plantsList)
             }
         }
