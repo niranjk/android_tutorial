@@ -80,6 +80,9 @@ BottomNavigationView
 - Declarative Operators: combine, flowOn, conflate 
 - MenuProvider 
 - Switching between two flows using flatMapLatest
+- Retrofit 
+- Api Service 
+
 
 
 

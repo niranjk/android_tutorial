@@ -215,7 +215,7 @@ class PlantsRepository private constructor(
      * Fetch a new list of plants from the network, and append them to [plantDao]
      */
     private suspend fun fetchRecentPlants() {
-        val plants = plantService.allPlants()
+        val plants = plantService.allPlants()  // Fetch plants from the Server
         plantDao.insertAll(plants)
     }
 
