@@ -109,6 +109,15 @@ open class DrawerBaseActivity : AppCompatActivity(), OnNavigationItemSelectedLis
                     )
                 )
             }
+
+            R.id.fotoActivity -> {
+                startActivity(
+                    Intent().setClassName(
+                        BuildConfig.APPLICATION_ID,
+                        BuildConfig.DF_FOTO_ACTIVITY
+                    )
+                )
+            }
         }
         return false
     }

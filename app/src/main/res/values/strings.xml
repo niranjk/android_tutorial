@@ -65,4 +65,28 @@
     <string name="label_plants_app">Plants</string>
     <string name="label_filter_zone">Filter Zone</string>
     <string name="label_no_filter_zone">No Filter Zone</string>
+
+    <!--Foto App String-->
+    <string name="label_foto_app">Foto</string>
+    <!-- Titles -->
+    <string name="blur_title">Select Blur Amount</string>
+
+    <!-- Buttons -->
+    <string name="select_image">Select Image</string>
+    <string name="go">Go</string>
+    <string name="see_file">See File</string>
+
+    <!-- Content descriptions -->
+    <string name="description_image">The image to blur and save.</string>
+
+    <!-- Blur levels -->
+    <string name="blur_lv_1">10% blurred</string>
+    <string name="blur_lv_2">50% blurred</string>
+    <string name="blur_lv_3">100% blurred</string>
+    <string name="cancel_work">Cancel Work</string>
+
+    <!-- Messages -->
+    <string name="set_permissions_in_settings">Go to Settings -> Apps and Notifications ->
+        WorkManager Demo -> App Permissions and grant access to Storage.</string>
+
 </resources>

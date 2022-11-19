@@ -84,5 +84,8 @@ BottomNavigationView
 - Api Service 
 
 
+# Foto 
+- WorkManager Jetpack library
+
 
 

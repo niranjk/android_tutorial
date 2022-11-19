@@ -43,6 +43,7 @@ android {
         buildConfigField("String", "DF_NOTES_ACTIVITY", df_notes_activity)
         buildConfigField("String", "DF_QUOTES_ACTIVITY", df_quotes_activity)
         buildConfigField("String", "DF_PLANTS_ACTIVITY", df_plants_activity)
+        buildConfigField("String", "DF_FOTO_ACTIVITY", df_foto_activity)
     }
 
     compileOptions {

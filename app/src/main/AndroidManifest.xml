@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
             android:name=".TutorialApplication"
@@ -31,6 +32,7 @@
         <activity android:name=".notes.view.NewNotesActivity" />
         <activity android:name=".quotes.view.QuotesActivity" />
         <activity android:name=".plants.view.PlantsActivity" />
+        <activity android:name=".foto.FotoActivity" />
     </application>
 
 </manifest>

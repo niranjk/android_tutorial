@@ -37,4 +37,9 @@
             android:icon="@drawable/ic_plants"
             android:title="@string/label_plants_app"
     />
+    <item
+            android:id="@+id/fotoActivity"
+            android:icon="@drawable/ic_edit"
+            android:title="@string/label_foto_app"
+    />
 </menu>
