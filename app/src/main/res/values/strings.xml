@@ -74,7 +74,7 @@
     <!-- Buttons -->
     <string name="select_image">Select Image</string>
     <string name="go">Go</string>
-    <string name="see_file">See File</string>
+    <string name="see_image">See Image</string>
 
     <!-- Content descriptions -->
     <string name="description_image">The image to blur and save.</string>

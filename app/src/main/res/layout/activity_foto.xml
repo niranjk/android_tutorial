@@ -98,7 +98,7 @@
                         android:id="@+id/see_file_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/see_file"
+                        android:text="@string/see_image"
                         android:visibility="gone"
                         tools:visibility="visible" />
 
