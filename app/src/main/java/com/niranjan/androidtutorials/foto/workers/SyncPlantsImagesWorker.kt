@@ -7,7 +7,10 @@ import com.niranjan.androidtutorials.plants.model.Plants
 import com.niranjan.androidtutorials.plants.network.NetworkService
 
 /**
- * This Coroutine Worker class will sync app with the server recent images
+ * This Coroutine Worker class will sync app with the server data.
+ *
+ * We extend the [CoroutineWorker] class and override the
+ * suspending [doWork] method.
  */
 class SyncPlantsImagesWorker(
     ctx: Context,

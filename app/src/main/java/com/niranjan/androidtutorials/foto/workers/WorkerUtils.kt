@@ -37,10 +37,8 @@ import java.util.*
  * @param message Message shown on the notification
  * @param context Context needed to create Toast
  */
-
 private const val TAG = "WorkerUtils"
 fun makeStatusNotification(message: String, context: Context) {
-
     // Make a channel if necessary
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         // Create the NotificationChannel, but only on API 26+ because
@@ -50,11 +48,9 @@ fun makeStatusNotification(message: String, context: Context) {
         val importance = NotificationManager.IMPORTANCE_HIGH
         val channel = NotificationChannel(CHANNEL_ID, name, importance)
         channel.description = description
-
         // Add the channel
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
-
         notificationManager?.createNotificationChannel(channel)
     }
 
