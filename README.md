@@ -86,6 +86,14 @@ BottomNavigationView
 
 # Foto 
 - WorkManager Jetpack library
+- WorkRequest
+- Worker - doWork()
+- WorkManager
+- OneTimeWorkRequestBuilder by TAG 
+- Work Info Observer by TAG 
+- Cancelling Unique Work or All Work.
+- Add Constraints to WorkRequest 
+- Make Status Notification - to Notify the Work Status 
 
 
 

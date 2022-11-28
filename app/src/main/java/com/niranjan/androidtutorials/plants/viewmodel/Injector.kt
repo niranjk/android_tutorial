@@ -33,6 +33,15 @@ private object DefaultViewModelProvider: ViewModelFactoryProvider {
     }
 }
 
+object PlantsRepositoryProvider {
+    fun getPlantRepository(context: Context): PlantsRepository {
+        return PlantsRepository.getInstance(
+            PlantsDatabase.getInstance(context.applicationContext).plantDao(),
+            NetworkService()
+        )
+    }
+}
+
 private object Lock
 
 @Volatile private var currentInjector: ViewModelFactoryProvider =

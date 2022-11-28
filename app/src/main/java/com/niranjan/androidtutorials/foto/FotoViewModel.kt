@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.work.*
 import com.niranjan.androidtutorials.MainConstants.FOTO_EDITING_WORK_NAME
 import com.niranjan.androidtutorials.MainConstants.KEY_IMAGE_URI
+import com.niranjan.androidtutorials.MainConstants.TAG_IMAGE_BLURRED
 import com.niranjan.androidtutorials.MainConstants.TAG_OUTPUT
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.foto.workers.BlurWorker
@@ -19,9 +20,15 @@ import com.niranjan.androidtutorials.foto.workers.SaveImageToFileWorker
 class FotoViewModel(application: Application) : ViewModel() {
     private var imageUri: Uri? = null
     internal var outputUri: Uri? = null
+
+    /**
+     * Create the Instance of WorkManager in ViewModel
+     */
     private val workManager = WorkManager.getInstance(application)
+
+    // Work Infos Observer by TAG
     internal val outputWorkInfos: LiveData<List<WorkInfo>> =
-        workManager.getWorkInfosByTagLiveData(TAG_OUTPUT)
+        workManager.getWorkInfosByTagLiveData(TAG_IMAGE_BLURRED)
 
     init {
         // This transformation makes sure that whenever the current work id changes
@@ -33,9 +40,9 @@ class FotoViewModel(application: Application) : ViewModel() {
         val resources = context.resources
         return Uri.Builder()
             .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
-            .authority(resources.getResourcePackageName(R.drawable.ic_plants))
-            .appendPath(resources.getResourceTypeName(R.drawable.ic_plants))
-            .appendPath(resources.getResourceEntryName(R.drawable.ic_plants))
+            .authority(resources.getResourcePackageName(R.drawable.cartoon))
+            .appendPath(resources.getResourceTypeName(R.drawable.cartoon))
+            .appendPath(resources.getResourceEntryName(R.drawable.cartoon))
             .build()
     }
 
@@ -66,7 +73,7 @@ class FotoViewModel(application: Application) : ViewModel() {
 
         // Add WorkRequests to blur the image the number of times requested
         for (i in 0 until blurLevel) {
-            val blurBuilder = OneTimeWorkRequestBuilder<BlurWorker>()
+            val blurBuilder = OneTimeWorkRequestBuilder<BlurWorker>().addTag(TAG_IMAGE_BLURRED)
 
             // Input the Uri if this is the first blur operation
             // After the first blur operation the input will be the output of previous
@@ -108,6 +115,7 @@ class FotoViewModel(application: Application) : ViewModel() {
 
     internal fun cancelWork(){
         workManager.cancelUniqueWork(FOTO_EDITING_WORK_NAME)
+        workManager.cancelAllWork()
     }
 }
 

@@ -33,18 +33,21 @@ class FotoActivity : DrawerBaseActivity(){
             }
             seeFileButton.setOnClickListener {
                 viewModel.outputUri?.let { currentUri ->
+                    // set the blurred image to the ImageView
+                    imageView.setImageURI(viewModel.outputUri)
+                    /**
                     val actionView = Intent(Intent.ACTION_VIEW, currentUri)
                     actionView.resolveActivity(packageManager)?.run {
                         startActivity(actionView)
                     }
+                    */
                 }
             }
             cancelButton.setOnClickListener {
                 viewModel.cancelWork()
             }
 
-            lifecycleOwner?.let { viewModel.outputWorkInfos.observe(it, workInfosObserver()) }
-
+            viewModel.outputWorkInfos.observe(this@FotoActivity, workInfosObserver())
         }
     }
 

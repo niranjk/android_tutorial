@@ -17,7 +17,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_plants"
+                    android:src="@drawable/cartoon"
                     android:contentDescription="@string/description_image"
                     android:scaleType="fitCenter" />
 

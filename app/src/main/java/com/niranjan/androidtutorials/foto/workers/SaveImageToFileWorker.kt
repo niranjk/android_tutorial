@@ -39,10 +39,11 @@ class SaveImageToFileWorker(ctx: Context, params: WorkerParameters) : Worker(ctx
                 resolver, bitmap, Title, dateFormatter.format(Date()))
             if (!imageUrl.isNullOrEmpty()) {
                 val output = workDataOf(KEY_IMAGE_URI to imageUrl)
-
+                makeStatusNotification("Saving image Success: $output", applicationContext)
                 Result.success(output)
             } else {
                 Log.e(TAG, "Writing to MediaStore failed")
+                makeStatusNotification("Saving image Failure", applicationContext)
                 Result.failure()
             }
         } catch (exception: Exception) {

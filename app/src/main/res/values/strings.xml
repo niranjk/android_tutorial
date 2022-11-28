@@ -80,9 +80,9 @@
     <string name="description_image">The image to blur and save.</string>
 
     <!-- Blur levels -->
-    <string name="blur_lv_1">10% blurred</string>
-    <string name="blur_lv_2">50% blurred</string>
-    <string name="blur_lv_3">100% blurred</string>
+    <string name="blur_lv_1">Blur Level 1</string>
+    <string name="blur_lv_2">Blur Level 2</string>
+    <string name="blur_lv_3">Blur Level 3</string>
     <string name="cancel_work">Cancel Work</string>
 
     <!-- Messages -->

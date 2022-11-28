@@ -33,6 +33,7 @@ class CleanupWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params
                     }
                 }
             }
+            makeStatusNotification("Success Cleaning ", applicationContext)
             Result.success()
         } catch (exception: Exception) {
             exception.printStackTrace()
