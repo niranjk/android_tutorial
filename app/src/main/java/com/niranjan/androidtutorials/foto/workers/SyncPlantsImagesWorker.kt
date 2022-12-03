@@ -5,6 +5,7 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.niranjan.androidtutorials.MainConstants
+import com.niranjan.androidtutorials.MainConstants.MY_WORK_A_ID
 import com.niranjan.androidtutorials.MainConstants.WORK_REQUEST_OUTPUT_DATA
 import com.niranjan.androidtutorials.plants.model.Plants
 import com.niranjan.androidtutorials.plants.network.NetworkService
@@ -37,7 +38,10 @@ class SyncPlantsImagesWorker(
                 appContext
             )
             // Return the output data to the WorkManger in Result.success()
-            val outputData = workDataOf( WORK_REQUEST_OUTPUT_DATA to totalImagesSynced )
+            val outputData = workDataOf(
+                WORK_REQUEST_OUTPUT_DATA to totalImagesSynced,
+                MY_WORK_A_ID to id
+            )
             return Result.success(outputData)
         } catch (throwable: Throwable){
             Result.failure()

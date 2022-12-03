@@ -10,6 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.work.*
 import com.niranjan.androidtutorials.MainConstants.FOTO_EDITING_WORK_NAME
 import com.niranjan.androidtutorials.MainConstants.KEY_IMAGE_URI
+import com.niranjan.androidtutorials.MainConstants.MY_UNIQUE_WORK
+import com.niranjan.androidtutorials.MainConstants.MY_WORK_TAG_A
+import com.niranjan.androidtutorials.MainConstants.MY_WORK_TAG_B
 import com.niranjan.androidtutorials.MainConstants.TAG_IMAGE_BLURRED
 import com.niranjan.androidtutorials.MainConstants.TAG_OUTPUT
 import com.niranjan.androidtutorials.MainConstants.WORK_REQUEST_INPUT_DATA_KEY
@@ -19,6 +22,7 @@ import com.niranjan.androidtutorials.foto.workers.BlurWorker
 import com.niranjan.androidtutorials.foto.workers.CleanupWorker
 import com.niranjan.androidtutorials.foto.workers.SaveImageToFileWorker
 import com.niranjan.androidtutorials.foto.workers.SyncPlantsImagesWorker
+import java.util.*
 
 class FotoViewModel(application: Application) : ViewModel() {
     private var imageUri: Uri? = null
@@ -54,6 +58,24 @@ class FotoViewModel(application: Application) : ViewModel() {
         )
         workManager.enqueue(myWorkBuilder.build())
     }
+
+    /**
+     * WorkInfo object contains details about the current state of a WorkRequest.
+     *
+     * WorkStates are: [BLOCKED], [CANCELLED], [ENQUEUED], [FAILED], [RUNNING], [SUCCEEDED]
+     */
+    // UNIQUE ID GENEREATED BY WORKMANAGER FOR EACH WORKREQUEST
+    val myWorkRequest = OneTimeWorkRequestBuilder<SyncPlantsImagesWorker>().build()
+    val myWorkRequestByTag = OneTimeWorkRequestBuilder<CleanupWorker>().addTag(MY_WORK_TAG_B).build()
+    val getWorkInfoByWorkId : LiveData<WorkInfo> =
+        workManager.getWorkInfoByIdLiveData(myWorkRequest.id)
+
+    val getWorkInfoByUniqueChainName : LiveData<List<WorkInfo>> =
+        workManager.getWorkInfosForUniqueWorkLiveData(MY_UNIQUE_WORK)
+
+    val getWorkByTagName : LiveData<List<WorkInfo>> =
+        workManager.getWorkInfosByTagLiveData(MY_WORK_TAG_A)
+
 
     // Work Infos Observer by TAG
     internal val outputWorkInfos: LiveData<List<WorkInfo>> =
@@ -114,9 +136,9 @@ class FotoViewModel(application: Application) : ViewModel() {
             continuation = continuation.then(blurBuilder.build())
         }
 
-        // Create charging constraint
+        // Create battery not low constraint
         val constraints = Constraints.Builder()
-            .setRequiresCharging(true)
+            .setRequiresBatteryNotLow(true)
             .build()
 
         // Add WorkRequest to save the image to the filesystem
@@ -124,6 +146,7 @@ class FotoViewModel(application: Application) : ViewModel() {
             .setConstraints(constraints)
             .addTag(TAG_OUTPUT)
             .build()
+
         continuation = continuation.then(save)
 
         // Actually start the work
@@ -132,16 +155,23 @@ class FotoViewModel(application: Application) : ViewModel() {
 
     /**
      * Chaining Multiple Works
+     * Creating Unique Work Chain running at a time.
+     * If work already existing then we can REPLACE, KEEP OR APPEND
+     * the current work.
      */
     fun chainingMultipleWork(){
-        val workA = OneTimeWorkRequestBuilder<CleanupWorker>().build()
+        val workA = OneTimeWorkRequestBuilder<CleanupWorker>().addTag(MY_WORK_TAG_A).build()
         val workB = OneTimeWorkRequestBuilder<BlurWorker>().setInputData(
             Data.Builder().putString(WORK_REQUEST_INPUT_DATA_KEY, "your data").build()
         ).build()
         val workC = OneTimeWorkRequestBuilder<SaveImageToFileWorker>().build()
         val workD = OneTimeWorkRequestBuilder<SyncPlantsImagesWorker>()
 
-        val continueWork = workManager.beginWith(workA)
+        val continueWork = workManager.beginUniqueWork(
+            MY_UNIQUE_WORK,   // Your Unique Work Name
+            ExistingWorkPolicy.REPLACE, // REPLACE, KEEP, APPEND
+            workA
+        )
         // chain your works in parallel
         continueWork.then(workB)
         continueWork.then(workC)
@@ -167,8 +197,14 @@ class FotoViewModel(application: Application) : ViewModel() {
         outputUri = uriOrNull(outputImageUri)
     }
 
+    /**
+     * Cancelling WorkRequests
+     */
     internal fun cancelWork(){
-        workManager.cancelUniqueWork(FOTO_EDITING_WORK_NAME)
+        workManager.cancelUniqueWork(MY_UNIQUE_WORK)
+
+    }
+    internal fun cancelAllWork(){
         workManager.cancelAllWork()
     }
 }

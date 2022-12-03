@@ -24,8 +24,46 @@ class FotoActivity : DrawerBaseActivity(){
         setContentView(binding.root)
         allocateActivityTitle(getString(R.string.label_foto_app))
         setViewListeners()
+        setWorkInfoObservers()
     }
 
+    /**
+     * Observer your WorkInfo and Update your UI based of the WorkInfo.State
+     */
+    private fun setWorkInfoObservers(){
+        viewModel.getWorkInfoByWorkId.observe(this) { workInfo ->
+            when (workInfo.state) {
+                WorkInfo.State.SUCCEEDED -> {
+                }
+                WorkInfo.State.FAILED -> {
+                }
+                WorkInfo.State.BLOCKED-> {
+                }
+                WorkInfo.State.CANCELLED-> {
+                }
+                WorkInfo.State.ENQUEUED-> {
+                }
+                WorkInfo.State.RUNNING-> {
+                }
+            }
+        }
+
+        viewModel.getWorkByTagName.observe(this){ workInfoList ->
+            // no matching work with TAG
+            if (workInfoList.isNullOrEmpty()){
+                return@observe
+            }
+            val workInfo = workInfoList[0]
+            when {
+                workInfo.state.isFinished -> {
+                    // show Work Finished
+                }
+                else -> {
+                    // show Work In Progress
+                }
+            }
+        }
+    }
     private fun setViewListeners(){
         with(binding){
             goButton.setOnClickListener {

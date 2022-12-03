@@ -47,4 +47,10 @@ object MainConstants {
     const val WORK_REQUEST_INPUT_DATA_KEY = "WORK_REQUEST_INPUT_DATA_KEY"
     const val WORK_REQUEST_OUTPUT_DATA = "WORK_REQUEST_OUTPUT_DATA"
     const val WORK_REQUEST_INPUT_DATA_VALUE = "WORK_REQUEST_INPUT_DATA_VALUE"
+    const val MY_UNIQUE_WORK = "MY_UNIQUE_WORK"
+    const val MY_WORK_A_ID = "MY_WORK_A_ID"
+    const val MY_WORK_TAG_A = "MY_WORK_TAG_A"
+    const val MY_WORK_TAG_B = "MY_WORK_TAG_B"
+    const val MY_WORK_TAG_C = "MY_WORK_TAG_C"
+    const val MY_WORK_TAG_D = "MY_WORK_TAG_E"
 }
