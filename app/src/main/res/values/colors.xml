@@ -13,4 +13,13 @@
     <color name="blue">#0288D1</color>
     <color name="blue_dark">#005B9F</color>
     <color name="blue_light">#81D4FA</color>
+    <color name="color_primary_blue">#0336ff</color>
+    <color name="color_on_primary_blue">#ffffff</color>
+    <color name="color_primary_variant_blue">#0035c9</color>
+    <color name="color_secondary_yellow">#ffde03</color>
+    <color name="color_on_secondary">#000000</color>
+    <color name="color_secondary_variant_yellow">#ffc000</color>
+    <color name="color_surface">#ffffff</color>
+    <color name="color_on_surface">#000000</color>
+    <color name="color_error">#b00020</color>
 </resources>
