@@ -98,6 +98,10 @@ BottomNavigationView
 - CoroutineWorker 
 - Add input and Output Parameters in WorkRequest
 - Chaining Multiple WorkRequest
+- Unique Work 
+- Observing WorkRequest by uniqueId gengerated by WorkManager or Tag Name or Unique Work Name 
+- Cancelling Work 
+- Adding Work Constraints
 
 
 
