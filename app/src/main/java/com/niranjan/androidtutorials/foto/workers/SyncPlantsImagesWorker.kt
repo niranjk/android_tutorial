@@ -3,6 +3,9 @@ package com.niranjan.androidtutorials.foto.workers
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
+import androidx.work.workDataOf
+import com.niranjan.androidtutorials.MainConstants
+import com.niranjan.androidtutorials.MainConstants.WORK_REQUEST_OUTPUT_DATA
 import com.niranjan.androidtutorials.plants.model.Plants
 import com.niranjan.androidtutorials.plants.network.NetworkService
 
@@ -16,10 +19,11 @@ class SyncPlantsImagesWorker(
     ctx: Context,
     workerParameters: WorkerParameters
 ) : CoroutineWorker(ctx, workerParameters) {
-
     override suspend fun doWork(): Result {
         // do work here
         val appContext = applicationContext
+        // Access your Input Data Object
+        val myData = inputData.getString(MainConstants.WORK_REQUEST_INPUT_DATA_KEY)
         val plantService = NetworkService()
         makeStatusNotification(
             "Syncing App Pictures...Started",
@@ -32,7 +36,9 @@ class SyncPlantsImagesWorker(
                 "Synced Pictures: $totalImagesSynced..",
                 appContext
             )
-            return Result.success()
+            // Return the output data to the WorkManger in Result.success()
+            val outputData = workDataOf( WORK_REQUEST_OUTPUT_DATA to totalImagesSynced )
+            return Result.success(outputData)
         } catch (throwable: Throwable){
             Result.failure()
         }

@@ -12,10 +12,13 @@ import com.niranjan.androidtutorials.MainConstants.FOTO_EDITING_WORK_NAME
 import com.niranjan.androidtutorials.MainConstants.KEY_IMAGE_URI
 import com.niranjan.androidtutorials.MainConstants.TAG_IMAGE_BLURRED
 import com.niranjan.androidtutorials.MainConstants.TAG_OUTPUT
+import com.niranjan.androidtutorials.MainConstants.WORK_REQUEST_INPUT_DATA_KEY
+import com.niranjan.androidtutorials.MainConstants.WORK_REQUEST_INPUT_DATA_VALUE
 import com.niranjan.androidtutorials.R
 import com.niranjan.androidtutorials.foto.workers.BlurWorker
 import com.niranjan.androidtutorials.foto.workers.CleanupWorker
 import com.niranjan.androidtutorials.foto.workers.SaveImageToFileWorker
+import com.niranjan.androidtutorials.foto.workers.SyncPlantsImagesWorker
 
 class FotoViewModel(application: Application) : ViewModel() {
     private var imageUri: Uri? = null
@@ -25,6 +28,32 @@ class FotoViewModel(application: Application) : ViewModel() {
      * Create the Instance of WorkManager in ViewModel
      */
     private val workManager = WorkManager.getInstance(application)
+
+    /**
+     * Create a [WorkRequest]
+     *
+     * and start the work using [WorkManager.enqueue]
+     */
+    fun doYourSyncWork(){
+        val myWorkRequest = OneTimeWorkRequest.from(SyncPlantsImagesWorker::class.java)
+        workManager.enqueue(myWorkRequest)
+    }
+
+
+    /**
+     * Adding Input Data to your WorkRequest
+     */
+    fun createWorkBuilder(){
+        val myWorkBuilder = OneTimeWorkRequestBuilder<SyncPlantsImagesWorker>()
+        val myInputData = Data.Builder().putString(
+            WORK_REQUEST_INPUT_DATA_KEY,
+            WORK_REQUEST_INPUT_DATA_VALUE
+        ).build()
+        myWorkBuilder.setInputData(
+            myInputData
+        )
+        workManager.enqueue(myWorkBuilder.build())
+    }
 
     // Work Infos Observer by TAG
     internal val outputWorkInfos: LiveData<List<WorkInfo>> =
@@ -99,6 +128,31 @@ class FotoViewModel(application: Application) : ViewModel() {
 
         // Actually start the work
         continuation.enqueue()
+    }
+
+    /**
+     * Chaining Multiple Works
+     */
+    fun chainingMultipleWork(){
+        val workA = OneTimeWorkRequestBuilder<CleanupWorker>().build()
+        val workB = OneTimeWorkRequestBuilder<BlurWorker>().setInputData(
+            Data.Builder().putString(WORK_REQUEST_INPUT_DATA_KEY, "your data").build()
+        ).build()
+        val workC = OneTimeWorkRequestBuilder<SaveImageToFileWorker>().build()
+        val workD = OneTimeWorkRequestBuilder<SyncPlantsImagesWorker>()
+
+        val continueWork = workManager.beginWith(workA)
+        // chain your works in parallel
+        continueWork.then(workB)
+        continueWork.then(workC)
+        // you can also repeat your work in chain passing the input data
+        repeat(3) { level ->
+            workD.setInputData(
+                Data.Builder().putInt("LEVEL", level).build()
+            )
+            continueWork.then(workD.build())
+        }
+        continueWork.enqueue() // start Work
     }
 
     private fun uriOrNull(uriString: String?): Uri? {

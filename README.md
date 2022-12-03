@@ -87,6 +87,7 @@ BottomNavigationView
 # Foto 
 - WorkManager Jetpack library
 - WorkRequest
+- WorkContinuation : WorkManager.beginUniqueWork 
 - Worker - doWork()
 - WorkManager
 - OneTimeWorkRequestBuilder by TAG 
@@ -95,6 +96,8 @@ BottomNavigationView
 - Add Constraints to WorkRequest 
 - Make Status Notification - to Notify the Work Status 
 - CoroutineWorker 
+- Add input and Output Parameters in WorkRequest
+- Chaining Multiple WorkRequest
 
 
 
