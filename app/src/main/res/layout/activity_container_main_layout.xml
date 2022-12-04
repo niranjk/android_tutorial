@@ -11,6 +11,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/appBarLayout"
                 app:layout_constraintTop_toTopOf="parent">
+            <!--Refer to theme attribute in a layout -->
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/mainToolbar"
                     android:layout_width="match_parent"

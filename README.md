@@ -104,4 +104,10 @@ BottomNavigationView
 - Adding Work Constraints
 
 
+# Android UI Design 
+- Theme 
+- Styles
+- View Attributes 
+
+
 

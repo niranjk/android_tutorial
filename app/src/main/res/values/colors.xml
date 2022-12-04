@@ -22,4 +22,14 @@
     <color name="color_surface">#ffffff</color>
     <color name="color_on_surface">#000000</color>
     <color name="color_error">#b00020</color>
+
+    <!--COLOR PERSONALISED-->
+    <color name="colorPrimary">#E0E0E0</color>
+    <color name="colorPrimaryDark">#FBB8AC</color>
+    <color name="colorAccent">#FEDBD0</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="toolbarIconColor">@color/textColorPrimary</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#FFFBFA</color>
+    <color name="textInputOutlineColor">#FBB8AC</color>
 </resources>

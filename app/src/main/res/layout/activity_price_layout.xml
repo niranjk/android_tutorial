@@ -26,6 +26,7 @@
                 app:srcCompat="@drawable/ic_store" />
 
         <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Personalised.Level1.TextInputLayout"
                 android:id="@+id/cost_of_product"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
@@ -126,7 +127,10 @@
                 style="@style/Widget.Price.TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:padding="8dp"
                 android:layout_marginTop="8dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calculate_button"
                 android:text="@{@string/final_price + price}"

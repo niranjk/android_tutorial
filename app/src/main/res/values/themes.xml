@@ -25,4 +25,13 @@
         <item name="windowActionBar">false</item>
         <item name="actionBarSize">40dp</item>
     </style>
+
+    <style name="Theme.Personalised.Level1" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    </style>
 </resources>
