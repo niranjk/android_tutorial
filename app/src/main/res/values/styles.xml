@@ -79,7 +79,7 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="TextAppearance.Personalised.Level1.Title" parent="TextAppearance.MaterialComponents.Headline4">
+    <style name="TextAppearance.Personalised.Level1.Title" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>

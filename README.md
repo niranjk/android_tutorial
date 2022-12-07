@@ -108,6 +108,11 @@ BottomNavigationView
 - Theme 
 - Styles
 - View Attributes 
+- Alternative Resources 
+- Colors 
+- Dimensions 
+- TypeSpace
+- TextAppearance 
 
 
 
