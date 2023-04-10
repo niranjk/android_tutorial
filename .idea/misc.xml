@@ -12,6 +12,8 @@
         <entry key="app/src/main/res/drawable/ic_runner.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/ic_service.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_store.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/ic_voice_call.xml" value="0.163" />
+        <entry key="app/src/main/res/layout/activity_bubble.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_container_main_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_drawer_base.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_foto.xml" value="0.165" />
@@ -19,6 +21,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_new_notes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_notes.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_people.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_plants.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_price_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.1" />
@@ -26,11 +29,17 @@
         <entry key="app/src/main/res/layout/activity_runner.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_slot.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_stopwatch.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_voice_call.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_aboutinfo.xml" value="0.29257246376811596" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.300509337860781" />
+        <entry key="app/src/main/res/layout/fragment_people.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_photo.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_plants.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_quiz.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_quiz_result.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/layout/item_chat.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_message.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_plant.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_topic.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header_layout.xml" value="0.1" />
